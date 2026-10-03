@@ -20,8 +20,8 @@ sources:
 
 An autonomous agent that acts on live systems will meet situations nobody
 anticipated. If it treats every situation as solvable, it improvises under
-incident conditions with a model whose diagnostic accuracy is known to be low
-(see [LLM SRE agents still have low success](../evaluation/llm-sre-agents-low-success.md)).
+incident conditions with a model whose diagnostic accuracy is uneven and often low
+(see [LLM SRE agent success varies by benchmark and fault class](../evaluation/llm-sre-agents-low-success.md)).
 If it escalates everything, it adds nothing. The design question is where the
 boundary of autonomous action sits and what crossing it means.
 [Human approval gates](human-approval-gates.md) answer this per action ("this

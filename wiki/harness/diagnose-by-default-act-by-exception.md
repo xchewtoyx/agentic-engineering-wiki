@@ -38,7 +38,7 @@ sources:
 An agent with write access to a live system can make an incident worse faster
 than any human. A wrong diagnosis followed by an automatic restart, config
 rewrite or rollback compounds the original fault, and LLM diagnosis is often
-wrong (see [LLM SRE agents still have low success](../evaluation/llm-sre-agents-low-success.md)).
+wrong (see [LLM SRE agent success varies by benchmark and fault class](../evaluation/llm-sre-agents-low-success.md)).
 [Human approval gates](human-approval-gates.md) set the automation level per
 action; the prior question is what posture the agent takes when nothing has
 been approved.

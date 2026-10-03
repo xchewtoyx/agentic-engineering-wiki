@@ -44,7 +44,7 @@ Each run produces a labelled failure, which serves three purposes:
   [restart caps escalate](../orchestration/supervision-tree-escalation.md).
 - It measures diagnosis accuracy for each fault class, which decides where
   autonomous action is justified, given that
-  [LLM SRE agents still have low success](llm-sre-agents-low-success.md).
+  [LLM SRE agent success varies by benchmark and fault class](llm-sre-agents-low-success.md).
 - It yields fault-free and faulty reference traces for
   [baseline comparison](known-good-baseline-comparison.md).
 
