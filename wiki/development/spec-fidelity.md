@@ -20,4 +20,4 @@ In autonomous code generation, the output quality of synthesis agents is bounded
 
 Measuring spec fidelity before dispatching synthesis agents ensures that the system operates in the safe zone where hallucinations are suppressed, enabling reliable [zero-shot repository synthesis](zero-shot-repository-synthesis.md); the [spec fidelity gate](spec-fidelity-gate.md) operationalizes that check at the boundary between formalization and synthesis.
 
-Fidelity, not velocity, is the steering metric. Scrum calibrates team capacity through cadence speed; agentic delivery instead asks how accurately the agent ingests and realizes the specification, tracked in aggregate by a synthesis-efficiency ratio and by [autonomy telemetry](agentic-autonomy-telemetry.md) rather than story points.
+Fidelity, not velocity, is the steering metric. Scrum calibrates team capacity through cadence speed; agentic delivery instead asks how accurately the agent ingests and realizes the specification, tracked in aggregate by the [Synthesis Efficiency Ratio](synthesis-efficiency-ratio.md) and by [autonomy telemetry](agentic-autonomy-telemetry.md) rather than story points.

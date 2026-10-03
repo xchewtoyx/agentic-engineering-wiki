@@ -1,6 +1,21 @@
 # Extraction plan: agentic-engineering → agentic-engineering-wiki
 
-Status: **second-pass draft**, updated after the first review. Nothing has been moved yet.
+Status: **executed** (2026-10-03). Outcome:
+
+- 403 notes extracted. Hand review corrected 28 rows (7%) of the draft mapping;
+  `note-mapping.tsv` is the final placement of the original notes.
+- Imports and merges: 15 new agent-framed notes (development 11, evaluation 2,
+  security 1, root 2). 18 rgh-sme duplicates or near-duplicates were folded
+  into existing notes instead.
+- Declined: `supply-chain-compromise` (no model, tool or MCP angle in the
+  source) and `verifying-generative-ai-outputs` (near-duplicate of
+  `hallucination`; its three distinct points were folded in).
+  `synthesis-provenance-log` was split between `synthesis-provenance-tracking`
+  and `spec-architect-role`.
+- Result: 419 notes, 1,932 links, 0 broken. `okf validate` and
+  `mkdocs build --strict` are clean.
+- Follow-up (curation): 27 notes have no inbound links. All were already
+  orphaned in the rgh-sme bundle, and none were introduced by the extraction.
 
 Scope note: this repo is about **curating information**: what the notes say and how
 they are organised. It deliberately carries no lifecycle machinery (no staleness

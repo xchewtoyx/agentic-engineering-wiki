@@ -18,3 +18,5 @@ When autonomous agents generate entire microservices or execute multi-file refac
 - **Verification audit trail**: Attaches the execution logs of all automated gates—including compiler diagnostics, test suite results, and static analysis outputs—that validated the artifact prior to human merge.
 
 During incident response and debugging, engineers query the provenance trail to determine whether a failure stems from model hallucination, an unhandled edge case in the specification, or an outdated test oracle, preserving operational maintainability at synthesis scale.
+
+Vendor and model lock-in makes the trail load-bearing rather than ceremonial. Closed third-party model APIs bring pricing volatility, service deprecation, and behavioral drift, so teams need multi-tier model routing, an exit strategy, and reproducible builds pinned to explicit specification versions. The provenance record is what states which spec version and which model produced each artifact, so a build can be regenerated or migrated when a provider changes underneath it.
