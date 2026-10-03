@@ -63,8 +63,8 @@ Code cookbook mounts an agent's rule and harness-state directories read-only
 and requires a fresh human approval for every attempted edit, with no
 standing grant ([immutable agent guardrails](../security/immutable-agent-guardrails.md)).
 Taken together: sandboxed trials, a verifier the editor cannot change,
-bounded diffs, regression gates judged by
-[reliable rather than mean lift](../evaluation/reliable-lift-not-mean-lift.md),
+bounded diffs, regression gates that check
+[reliable lift alongside mean lift](../evaluation/reliable-lift-not-mean-lift.md),
 and a lineage log such as a
 [full-trace remediation audit](../harness/full-trace-remediation-audit.md).
 

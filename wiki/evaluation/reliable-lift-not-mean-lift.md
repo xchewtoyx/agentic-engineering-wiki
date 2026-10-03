@@ -1,10 +1,10 @@
 ---
 type: concept
-title: Judge Reliable Lift, Not Mean Lift
+title: Judge Reliable Lift Alongside Mean Lift
 description: >
-  Judge harness changes by a lower-percentile held-out "reliable lift" and by
-  repeatability rather than by mean gain, because search procedures can select
-  brittle edits with large average improvements.
+  Report a lower-percentile held-out "reliable lift" and repeatability
+  alongside mean gain when judging harness changes, because search procedures
+  can select brittle edits with large average improvements.
 evidence: weak
 sources:
   - title: "Beyond Prompts"
@@ -26,8 +26,9 @@ retail domain was below 25%.
 
 A 2026 preprint from Airbnb, "Beyond Prompts", adds metrics for
 effectiveness, stability, repeatability and efficiency, and a reliable-lift
-estimator called RelLift95 that reports a lower-percentile held-out gain
-rather than the mean. Its middleware optimiser shows the gap:
+estimator called RelLift95, a lower-percentile held-out gain that the paper
+reports next to the mean as a conservative companion to it, not a replacement.
+Its middleware optimiser shows the gap between the two:
 
 | Benchmark | Mean held-out lift | Reliable lift |
 |---|---|---|
@@ -42,7 +43,11 @@ estimator is weakly supported even though the principle is well grounded.
 
 The practical rule: judge any change to an agent's prompts, tools or
 playbooks, or to its harness settings, on repeated runs over held-out tasks,
-reporting the worst-case or lower-percentile result rather than the average.
+and report both the mean and a lower-percentile result. The mean is the
+expected benefit; the lower percentile is a robustness constraint. Don't
+discard the mean: a change with a much larger mean gain and an acceptable
+lower tail can beat one that is consistently but only modestly better. What
+the lower percentile rules out is a large mean that rests on a brittle tail.
 This is the acceptance criterion inside
 [in-loop regression control](../optimization/in-loop-regression-control.md)
 and in [guarded self-modification](../optimization/self-modifying-harness-controllability.md).

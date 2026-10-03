@@ -45,8 +45,9 @@ conditions that are hard to meet on live infrastructure.
 
 The rule: treat any change to an agent's playbooks or harness configuration
 like a deploy. Re-run a fixed regression set of previously solved tasks,
-several times each, and reject the change if any of them stops passing, judged
-by [reliable rather than mean lift](../evaluation/reliable-lift-not-mean-lift.md).
+several times each, and reject the change if any of them stops passing, with a
+[reliable (lower-percentile) lift](../evaluation/reliable-lift-not-mean-lift.md)
+checked alongside the mean.
 That set is a [regression eval](../evaluation/capability-vs-regression-evals.md)
 run inside the optimiser rather than after it. A cheap deterministic layer
 for the same gate is
