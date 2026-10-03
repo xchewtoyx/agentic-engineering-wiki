@@ -5,7 +5,7 @@ description: >
   Errors in tool-using agents cascade from an early root cause, so diagnosis
   should find the step where the cascade began and feed back a correction
   from that point.
-evidence: moderate
+evidence: weak
 sources:
   - title: "Where LLM Agents Fail and How They Can Learn From Failures"
     resource: "Zhu, Liu, Li et al., arXiv 2509.25370, 29 Sep 2025 (AgentDebug) — https://arxiv.org/abs/2509.25370"
@@ -25,8 +25,12 @@ The AgentDebug paper builds tooling around that question. It contributes:
 - AgentDebug itself, which isolates the root-cause step in a failed
   trajectory and gives corrective feedback from that point.
 
-The authors report 24% higher all-correct accuracy, 17% higher step accuracy,
-and up to 26% relative gain in task success.
+The abstract reports 24% higher all-correct accuracy and 17% higher step
+accuracy than the strongest baseline, and up to 26% relative gain in task
+success. Only the last is stated as relative. Before comparing the first two
+with other results, read them against the baselines in the paper's results
+table: absolute differences from a low baseline mean something different from
+relative gains.
 
 The paper is a 2025 arXiv preprint with released code. Its benchmarks are
 agent tasks, not infrastructure incidents, so the size of the gain should not
