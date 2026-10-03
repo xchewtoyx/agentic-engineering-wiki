@@ -43,8 +43,8 @@ finding:
 - asking to widen a note's scope;
 - asking for new rules, fields or tooling.
 
-If no cited source can be read, state what would need checking. Do not
-substitute figures from memory.
+If a claim can't be checked because its cited source can't be read, raise no
+finding on it, and don't substitute figures from memory.
 
 ### Author rules
 
