@@ -9,7 +9,7 @@ sources:
     resource: "Nguyen & Nguyen (2026), ch. 8 (§7.3)"
 ---
 
-In the SDAD-V lifecycle, development descends from stakeholder intent through formalization until reaching the vertex: the **spec fidelity gate**. This gate serves as the formal boundary between human architectural intent and autonomous code synthesis.
+In the SDAD-V lifecycle (a [phase-latency-compressed](phase-latency-compression.md) descendant of the classic V-model), development descends from stakeholder intent through formalization until reaching the vertex: the **spec fidelity gate**. This gate serves as the formal boundary between human architectural intent and autonomous code synthesis.
 
 Before invoking [zero-shot repository synthesis](zero-shot-repository-synthesis.md) under [agentic linearism](agentic-linearism.md), the gate audits the formal specification against [spec fidelity](spec-fidelity.md) criteria:
 

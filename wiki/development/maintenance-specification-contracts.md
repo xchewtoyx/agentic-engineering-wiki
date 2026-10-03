@@ -17,4 +17,4 @@ When autonomous agents execute repository-wide migrations—such as language ret
 - **Dependency matrices**: Formal declarations of package versions, build graphs, and rollout sequencing.
 - **Executable verification commands**: Deterministic test suites and static linters that define the machine-checkable acceptance threshold.
 
-This structure enables an effective division of labor: the agent generates the bulk (~70–75%) of mechanical code diffs under [guided code transformations](guided-code-transformations.md), while human engineers act as directors (scoping, sequencing, and prompting) and reviewers (evaluating edge cases against business invariants).
+This structure enables an effective division of labor: the agent generates the bulk (~70–75%) of mechanical code diffs under [guided code transformations](guided-code-transformations.md), while human engineers act as directors (scoping, sequencing, and prompting) and reviewers (evaluating edge cases against business invariants) — the migration-scale instance of a [specification-governed operating model](specification-governed-operating-model.md).

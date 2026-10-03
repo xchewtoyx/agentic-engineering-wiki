@@ -9,7 +9,7 @@ sources:
     resource: "Nguyen & Nguyen (2026), ch. 9 (§9.2)"
 ---
 
-Traditional software development models treat code authorship as the core creative medium where business intent is translated into software. In human-centric Agile relays, this process pays a heavy **cumulative translation tax**: intent travels through multiple serial handoffs (stakeholder $\to$ product owner $\to$ architect $\to$ engineer $\to$ tester), with each boundary introducing latency, misunderstandings, and semantic drift.
+Traditional software development models treat code authorship as the core creative medium where business intent is translated into software. In human-centric Agile relays, this process pays a heavy [cumulative translation tax](cumulative-translation-tax.md): intent travels through multiple serial handoffs (stakeholder $\to$ product owner $\to$ architect $\to$ engineer $\to$ tester), with each boundary introducing latency, misunderstandings, and semantic drift.
 
 Under [spec-driven agentic development](spec-fidelity.md), the communication graph collapses:
 
@@ -17,4 +17,4 @@ Under [spec-driven agentic development](spec-fidelity.md), the communication gra
 - **Upstream migration of value**: The marginal effort of writing syntax trends toward commodity inference spend. The scarce, high-value engineering inputs migrate upstream into logic clarity, domain modeling, prompt/context structuring, and adversarial verification gate design.
 - **Elimination of handoff drift**: By feeding the formal specification directly into [zero-shot repository synthesis](zero-shot-repository-synthesis.md), the agent pipeline compiles features without the semantic degradation of intermediate human relays.
 
-This paradigm transforms the software engineer from a manual code author into a specification architect who defines the formal contracts and verification boundaries that govern autonomous synthesis.
+This paradigm transforms the software engineer from a manual code author into a [specification architect](spec-architect-role.md) who defines the formal contracts and verification boundaries that govern autonomous synthesis.

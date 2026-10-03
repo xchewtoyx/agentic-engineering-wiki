@@ -9,7 +9,7 @@ sources:
     resource: "Nguyen & Nguyen (2026), ch. 13 (§13.2)"
 ---
 
-When autonomous agents generate entire microservices or execute multi-file refactorings through [zero-shot repository synthesis](zero-shot-repository-synthesis.md), human developers lose the informal mental model traditionally built through manual authorship. In high-iteration repair cycles or multi-agent handoffs, it becomes impossible to determine *why* a particular code structure or dependency exists through traditional code archaeology.
+When autonomous agents generate entire microservices or execute multi-file refactorings through [zero-shot repository synthesis](zero-shot-repository-synthesis.md), human developers lose the informal mental model traditionally built through manual authorship — accruing [cognitive debt](cognitive-debt-in-agent-synthesized-code.md) and accelerating [tacit knowledge erosion](tacit-knowledge-erosion-under-ai-assisted-work.md). In high-iteration repair cycles or multi-agent handoffs, it becomes impossible to determine *why* a particular code structure or dependency exists through traditional code archaeology.
 
 **Synthesis provenance tracking** enforces an immutable audit trail embedded into the development harness:
 

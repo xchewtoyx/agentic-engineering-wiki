@@ -9,7 +9,7 @@ sources:
     resource: "Nguyen & Nguyen (2026), ch. 4"
 ---
 
-**Zero-shot repository synthesis** is the generation of complete, cross-module features—including domain logic, API schemas, database migrations, unit tests, and integration scaffolding—directly from a comprehensive specification without losing state across file boundaries.
+**Zero-shot repository synthesis** is the generation of complete, cross-module features—including domain logic, API schemas, database migrations, unit tests, and integration scaffolding—directly from a comprehensive specification without losing state across file boundaries. Its feasibility is what drives the [bottleneck inversion to intent clarity](bottleneck-inversion-to-intent-clarity.md).
 
 Key operational characteristics:
 
