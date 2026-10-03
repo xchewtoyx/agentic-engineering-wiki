@@ -116,12 +116,32 @@ Decisions behind the boundaries:
   isn't". Together they would be the largest folder (~80 notes) with two
   separate centres. The context↔knowledge seam carries 35 cross-links, which
   is fine.
-- **`reasoning/` is separate from `prompting/`.** C3 is a clean community, and
-  "make it think" and "phrase the ask" are different reader intents.
-  Reasoning-*about-actions* (`cot-for-action-grounding`,
-  `forced-reasoning-before-tools`) stays here. The heaviest single seam is
-  orchestration↔reasoning (49 links), so the two folders need to link to
-  each other well.
+- **`reasoning/` is separate from `prompting/`** (decided). C3 is a clean
+  community, and only 21 links cross the prompting↔reasoning seam.
+  `reasoning/`'s real neighbours are `orchestration/` (49 links) and
+  `evaluation/` (35). Its content is about what computation the model
+  performs (decomposition, search, sampling and voting, test-time compute),
+  not about phrasing. It is also the part of the field changing fastest as
+  reasoning moves into the models themselves, so keeping it separate
+  contains that churn.
+
+  **Placement rule** (goes into both folders' `_directory.yml` and the wiki
+  rules):
+
+  > If the note is about **what text you write** (instruction wording,
+  > anatomy, examples as format or task signal, output structure), it goes
+  > in `prompting/`. If it is about **what reasoning procedure you induce or
+  > run** (step-by-step, decomposition, search, sampling and voting,
+  > self-critique, test-time compute), it goes in `reasoning/`, even when the
+  > procedure is triggered purely by prompt text. Few-shot exemplars whose
+  > job is to demonstrate a procedure (CoT exemplars, decomposition demos)
+  > go in `reasoning/`. When a note is about a multi-step *pipeline* rather
+  > than a single call, it goes in `orchestration/`.
+
+  Applying the rule to the draft mapping moved `compositional-mapping-exemplars`
+  from `prompting/` to `reasoning/` and `research-outline-control-artifact`
+  from `reasoning/` to `orchestration/`. The rest of the hand review applies it
+  the same way.
 - **ACE (C7) goes in `optimization/`, not `context/`.** It is about
   contexts *evolving from execution feedback*, which is the same family as
   TextGrad and harness evolution. `context-engineering.md` (root) links
@@ -234,6 +254,5 @@ which keeps the repo light on machinery.
 
 ## Open questions
 
-1. **`reasoning/` vs `prompting/`.** Should these merge? Merging simplifies
-   routing but makes the folder larger. The current proposal keeps them
-   separate.
+None at the layout level. What remains is the row-by-row hand review of
+`note-mapping.tsv` during extraction.

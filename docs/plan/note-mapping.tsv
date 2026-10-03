@@ -308,6 +308,7 @@ orchestration	progressive-agent-architecture	C1
 orchestration	react-loop	C1
 orchestration	reflection-and-error-correction	C1
 orchestration	reflexion	C1
+orchestration	research-outline-control-artifact	C3
 orchestration	role-based-agent-delegation	C1
 orchestration	skill-library	C1
 orchestration	task-io-schema-design	C1
@@ -324,7 +325,6 @@ prompting	completion-boundary-markers	C0
 prompting	completion-confidence-scoring	C1
 prompting	completion-preamble-types	C0
 prompting	completion-stop-condition-design	C0
-prompting	compositional-mapping-exemplars	C3
 prompting	demonstration-input-distribution	C0
 prompting	demonstration-output-space	C0
 prompting	demonstrations-as-task-location	C0
@@ -357,6 +357,7 @@ reasoning	answer-cleansing	C3
 reasoning	branch-solve-merge	C1
 reasoning	chain-of-thought-prompting	C3
 reasoning	citation-backed-agent-answers	C3
+reasoning	compositional-mapping-exemplars	C3
 reasoning	compositional-translation-failure-modes	C3
 reasoning	consistency-as-uncertainty-signal	C3
 reasoning	cot-failure-modes	C3
@@ -377,7 +378,6 @@ reasoning	prompted-ir-expansion	C3
 reasoning	react-success-and-failure-taxonomy	C3
 reasoning	reasoning-trigger-sensitivity	C3
 reasoning	rejection-sampling-best-of-n	C3
-reasoning	research-outline-control-artifact	C3
 reasoning	scale-dependent-chain-of-thought	C3
 reasoning	self-consistency-decoding	C3
 reasoning	self-critique-prompting	C1
