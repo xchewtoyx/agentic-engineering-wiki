@@ -34,7 +34,8 @@ evaluate one at a time — the default before
 graph.
 
 Tempting to adopt a framework immediately; building without one first often
-preserves understanding. Evaluate tools on integration/extensibility, support
+preserves understanding ([own the control
+flow](start-simple-own-control-flow.md)). Evaluate tools on integration/extensibility, support
 for branching/parallel/error handling, and whether they hide API calls or add
 latency — criteria for [progressive agent architecture](progressive-agent-architecture.md)
 maturity.

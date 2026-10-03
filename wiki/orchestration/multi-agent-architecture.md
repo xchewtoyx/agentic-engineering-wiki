@@ -22,7 +22,10 @@ tool subsets from the shared [tool inventory](../harness/tool-inventory.md); see
 [multi-agent system advantages](multi-agent-system-advantages.md) for how this
 architecture drives modular upgradability, diverse perspectives, and parallel execution.
 Parallel candidate-plan generation with an evaluator is another multi-agent latency/cost
-tradeoff. Treat role boundaries as harness design: clear inputs/outputs between
+tradeoff. Roles that only read or advise can multiply freely, but keep exactly one
+writer per piece of state ([single-threaded writes](single-threaded-writes.md));
+a [shared task board](shared-task-board-coordination.md) is one way to sequence
+specialists when several must write. Treat role boundaries as harness design: clear inputs/outputs between
 agents matter as much as each agent's internal
 [ReAct](react-loop.md)-style loop.
 
