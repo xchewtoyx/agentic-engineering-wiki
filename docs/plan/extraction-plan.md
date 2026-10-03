@@ -4,8 +4,8 @@ Status: **executed** (2026-10-03). Outcome:
 
 - 403 notes extracted. Hand review corrected 28 rows (7%) of the draft mapping;
   `note-mapping.tsv` is the final placement of the original notes.
-- Imports and merges: 15 new agent-framed notes (development 11, evaluation 2,
-  security 1, root 2). 18 rgh-sme duplicates or near-duplicates were folded
+- Imports and merges: 16 new agent-framed notes (development 11, evaluation 2,
+  security 1, root 2). 17 rgh-sme duplicates or near-duplicates were folded
   into existing notes instead.
 - Declined: `supply-chain-compromise` (no model, tool or MCP angle in the
   source) and `verifying-generative-ai-outputs` (near-duplicate of
