@@ -13,9 +13,10 @@ books and posts it was distilled from.
 ## Layout
 
 ```
-wiki/                 the bundle: ~420 concept notes
+wiki/                 the bundle: atomic concept notes
 ├── *.md              overview concepts and model fundamentals (start here)
-├── prompting/        what text you write
+├── prompting/        what text you write for a call
+├── instructions/     standing instructions: AGENTS.md, skills, steering files
 ├── context/          what goes in the window, in what order, at what budget
 ├── knowledge/        retrieval, memory and knowledge bases outside the window
 ├── reasoning/        CoT, decomposition, search, voting, test-time compute

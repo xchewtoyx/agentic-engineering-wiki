@@ -29,7 +29,8 @@ One OKF bundle, `wiki/`, with one level of pillar folders:
 | Folder           | Routing question                                                          |
 | ---------------- | ------------------------------------------------------------------------- |
 | _(root)_         | What is this field, where do I start, how does the model itself behave?   |
-| `prompting/`     | What text do you write?                                                   |
+| `prompting/`     | What text do you write for a call?                                        |
+| `instructions/`  | How do you write standing instructions (AGENTS.md, skills, steering files)? |
 | `context/`       | What goes in the window, in what order, at what budget?                   |
 | `knowledge/`     | What lives outside the window, and how does it get back in?               |
 | `reasoning/`     | What reasoning procedure do you induce or run within a call?              |
@@ -62,6 +63,10 @@ One OKF bundle, `wiki/`, with one level of pillar folders:
 > triggered purely by prompt text. Few-shot exemplars whose job is to
 > demonstrate a procedure go in `reasoning/`. A note about a multi-step
 > _pipeline_ rather than a single call goes in `orchestration/`.
+
+Standing material that loads across many calls (AGENTS.md and steering
+files, skills, glossaries) and how to structure, split and prune it goes in
+`instructions/`, even where the advice is about wording.
 
 ### Root notes
 
@@ -102,6 +107,21 @@ sources:
   site's lede, not a summary of the whole note.
 - `sources`: the papers, books or posts the note draws on. Put a locator in
   `resource` (section, chapter or page range).
+- `evidence` (optional): `strong`, `moderate` or `weak`. Use it on notes
+  that rest on empirical or practitioner sources (vendor and practitioner
+  blogs, preprints, cookbooks, interviews) rather than established primary
+  literature. Leave it off notes drawn from peer-reviewed papers or
+  standard texts. The rating describes the note as a whole. If a note's
+  core rests on primary literature and only some added claims come from
+  preprints or practitioner sources, leave the field off and attribute
+  those claims in prose (for example "a 2026 preprint reports").
+  - `strong`: official documentation, peer-reviewed results, or several
+    independent sources that agree.
+  - `moderate`: credible practitioner or vendor engineering reports with
+    concrete evidence, or one solid study.
+  - `weak`: preprints, single blogs, secondary summaries, interviews or
+    reasoning by analogy. A weak note must say so in its body (for example
+    "a 2026 preprint reports").
 - No other fields. In particular, no `tags` (categorisation emerges from
   links) and no lifecycle fields (`generated`, `verified`, `status`,
   `stale_after`). This repo curates information, not lifecycle. When content

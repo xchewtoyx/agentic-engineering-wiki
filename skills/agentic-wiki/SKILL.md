@@ -6,7 +6,7 @@ description: Look up agentic engineering knowledge — prompting, context and me
 # Agentic engineering wiki
 
 The wiki is the `wiki/` folder at this plugin's root (two levels up from this
-file: `../../wiki/`). It holds ~420 atomic concept notes. Each note has a
+file: `../../wiki/`). It holds atomic concept notes. Each note has a
 `title`, a one-sentence `description`, and `sources:` frontmatter, and
 connects to related notes with inline relative links.
 
@@ -20,6 +20,7 @@ time. Never load a whole folder.
 | ----------------------------------------------------------------------- | ---------------- |
 | What is this, where do I start, how does the model behave (tokens, sampling, logprobs, hallucination, model choice)? | `wiki/` (root)   |
 | What text do I write (instructions, examples, format, output structure)? | `prompting/`     |
+| How do I write AGENTS.md, skills or steering files that load and steer well? | `instructions/` |
 | What goes in the window, in what order, at what budget?                  | `context/`       |
 | What lives outside the window — RAG, retrieval, memory, knowledge bases? | `knowledge/`     |
 | What reasoning procedure do I induce (CoT, decomposition, voting, search)? | `reasoning/`   |
@@ -73,6 +74,9 @@ They are relative paths and can cross folders (`../harness/tool-inventory.md`).
 - **Report gaps honestly.** If sensible vocabulary variants across the
   likely folders come up empty, say that the wiki doesn't cover the topic.
   Don't fill the gap from recall and present it as wiki content.
+- **Check `evidence` where present.** Notes from practitioner or empirical
+  sources carry `evidence: strong|moderate|weak`. Treat `weak` notes as
+  leads to verify, not as settled findings.
 - **This content changes fast.** Notes describe techniques as their sources
   reported them. When a claim depends on model capability or a specific
   vendor's API, check the source's date before you treat it as current.

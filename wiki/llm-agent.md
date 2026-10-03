@@ -36,3 +36,6 @@ and tool access raises the stakes of each wrong action. Teaching *which*,
 ([function calling](harness/function-calling.md), [ReAct](orchestration/react-loop.md)) or learned
 via [Toolformer-style](harness/toolformer-tool-use.md) self-supervision — either way,
 the harness must execute calls safely and feed results back as observations.
+That harness is a design surface in its own right: an agent's behaviour comes
+from [the model plus its harness](agent-equals-model-plus-harness.md), not the
+model alone.

@@ -12,7 +12,8 @@ sources:
 ---
 
 Start with the simplest architecture that can face users, then add components as
-challenges appear. A common production progression:
+challenges appear, keeping the control flow in your own code
+([start simple and own the control flow](start-simple-own-control-flow.md)). A common production progression:
 
 1. Enhance context — [RAG](../knowledge/retrieval-augmented-generation.md) and read tools.
 2. Add [input and output guardrails](../security/input-output-guardrails.md).

@@ -28,7 +28,10 @@ Strategies include [FIFO context eviction](fifo-context-eviction.md),
 [memory summarization](memory-summarization.md), reflection-driven insert /
 merge / replace, [self-directed memory management](self-directed-memory-management.md)
 via memory tools, and contradiction policies (prefer newer, or judge which to
-keep). [Zettelkasten agent memory notes](zettelkasten-agent-memory-notes.md)
+keep). Shipped agent harnesses pick very different points among these
+(unbounded history, recursive summaries, threshold compaction, agent-authored
+memory files); the [harness memory strategy spectrum](harness-memory-strategy-spectrum.md)
+maps them. [Zettelkasten agent memory notes](zettelkasten-agent-memory-notes.md)
 are a different answer to the add/organize half of this problem: instead of a
 developer-predefined store shape, an LLM authors each note's structure at
 write time and existing notes can themselves be revised as new ones arrive

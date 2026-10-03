@@ -24,7 +24,9 @@ considerable complexity compared to a DAG:
   carrying failure info attached, and handle that case in its own
   implementation — not just the task that detects failure.
 - A stopping mechanism is required (an attempt counter plus a give-up
-  threshold) so a work item cannot cycle indefinitely.
+  threshold) so a work item cannot cycle indefinitely; repeated failure should
+escalate rather than loop, as in
+[supervision-tree escalation](supervision-tree-escalation.md).
 
 Recommendation: where possible, hide recursion *inside* a single task rather
 than hoisting the cyclic complexity up to the workflow level, where every

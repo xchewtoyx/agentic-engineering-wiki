@@ -6,7 +6,7 @@ known_types = ["concept"]
 
 [profiles.wiki]
 required_frontmatter = ["title", "description"]
-optional_frontmatter = ["sources"]
+optional_frontmatter = ["sources", "evidence"]
 
 [bundles.agentic-engineering]
 bundle_root = "wiki"

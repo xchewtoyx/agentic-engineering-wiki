@@ -13,7 +13,7 @@ For two decades the industry optimized for small iterative cycles to absorb the 
 
 Agent speed does not remove discipline; it relocates it upstream:
 
-- **Specification precision** — human effort shifts from implementation detail to managing intent, measured as [spec fidelity](spec-fidelity.md).
+- **Specification precision** — human effort shifts from implementation detail to managing intent, measured as [spec fidelity](spec-fidelity.md); an agent that [grills the user over the design tree](grilling-the-design-tree.md) is one cheap way to surface the decisions a spec leaves open.
 - **Explicit phase gates** — a [spec fidelity gate](spec-fidelity-gate.md) before synthesis and independent multi-agent verification after it.
 - **Auditable provenance** — [synthesis provenance tracking](synthesis-provenance-tracking.md) links every generated artifact to the spec version that produced it.
 - **Separated authority** — the agent that synthesizes never holds release authority; the pipeline terminates in explicit human sign-off ([human approval gates](../harness/human-approval-gates.md)).

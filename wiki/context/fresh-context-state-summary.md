@@ -19,7 +19,8 @@ This is deliberate [context engineering](../context-engineering.md) and
 memory; observations stay local to the turn (pair with
 [collapsed observations](../harness/collapsed-observations.md) when you keep a longer
 transcript instead). Design the summary schema carefully — missing fields are
-permanent amnesia. Combine with a small discrete
+permanent amnesia; the same fidelity trade-off governs whole-session resets
+([compaction vs context reset](compaction-vs-context-reset.md)). Combine with a small discrete
 [browser tool action inventory](../harness/browser-tool-action-inventory.md) so each turn
 still emits one valid command under
 [action format enforcement](../harness/action-format-enforcement.md).

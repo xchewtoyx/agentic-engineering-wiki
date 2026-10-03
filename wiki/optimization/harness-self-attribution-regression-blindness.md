@@ -35,7 +35,8 @@ inference the same evidence trail doesn't support as well.
 **Practical consequence:** treat a manifest's `predicted_fixes` field as a
 genuinely useful targeting signal, but treat its `risk_tasks` / predicted-
 regression field as, at best, a partial early warning — not a substitute for
-actually re-running the full task panel after every edit. This asymmetry is
+actually re-running the full task panel after every edit, which is what
+[in-loop regression control](in-loop-regression-control.md) enforces. This asymmetry is
 also what produces the non-monotone step pattern typical of an evolution
 curve (score dips between otherwise-improving rounds): an edit lands its
 predicted fixes reliably, then costs unpredicted regressions the manifest

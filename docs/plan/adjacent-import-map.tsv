@@ -1,0 +1,131 @@
+source	note	action	target
+harness	agent-equals-model-plus-harness	import	agent-equals-model-plus-harness
+harness	fix-the-environment-not-the-output	import	instructions/fix-the-environment-not-the-output
+harness	harness-assumptions-go-stale	import	harness-assumptions-go-stale
+harness	harness-choice-reverses-model-rankings	merge	harness-as-performance-lever
+harness	inner-and-outer-harness	import	inner-and-outer-harness
+harness	seven-harness-subsystems	import	harness/seven-harness-subsystems
+harness	start-simple-own-control-flow	import	orchestration/start-simple-own-control-flow
+harness	thin-vs-thick-harness-debate	import	thin-vs-thick-harness-debate
+harness	agent-legibility-of-runtime	import	harness/agent-legibility-of-runtime
+harness	agents-md-as-map-not-manual	merge	instructions/steering-files-as-navigation-pointers
+harness	back-pressure	import	harness/back-pressure
+harness	doom-loop-detection	import	harness/doom-loop-detection
+harness	entropy-garbage-collection-agents	import	development/entropy-garbage-collection-agents
+harness	failures-returned-as-actionable-feedback	import	harness/failures-returned-as-actionable-feedback
+harness	guides-and-sensors	import	harness/guides-and-sensors
+harness	minimal-general-tool-surface	import	harness/minimal-general-tool-surface
+harness	progressive-disclosure	import	instructions/progressive-disclosure
+harness	shared-task-board-coordination	import	orchestration/shared-task-board-coordination
+harness	single-threaded-writes	import	orchestration/single-threaded-writes
+harness	worktree-isolated-subagent-fanout	import	orchestration/worktree-isolated-subagent-fanout
+harness	compaction-vs-context-reset	import	context/compaction-vs-context-reset
+harness	context-as-compiled-view	import	context/context-as-compiled-view
+harness	context-collapse-and-brevity-bias	merge	optimization/context-collapse
+harness	context-rot	import	context/context-rot
+harness	context-write-select-compress-isolate	import	context/context-write-select-compress-isolate
+harness	four-context-failure-modes	import	context/four-context-failure-modes
+harness	harness-memory-strategy-spectrum	import	knowledge/harness-memory-strategy-spectrum
+harness	long-context-agent-failure-modes	import	context/long-context-agent-failure-modes
+harness	safeguarded-compaction	import	context/safeguarded-compaction
+harness	session-log-outside-context-window	import	knowledge/session-log-outside-context-window
+harness	agent-runtime-fault-taxonomy	import	evaluation/agent-runtime-fault-taxonomy
+harness	deterministic-session-replay-ci	import	evaluation/deterministic-session-replay-ci
+harness	error-analysis-first	import	evaluation/error-analysis-first
+harness	failure-signature-clustering	import	optimization/failure-signature-clustering
+harness	guarded-self-modification	merge	optimization/self-modifying-harness-controllability
+harness	harness-card-disclosure	import	evaluation/harness-card-disclosure
+harness	in-loop-regression-control	import	optimization/in-loop-regression-control
+harness	infrastructure-noise-in-agent-evals	merge	evaluation/infra-failure-as-eval-failure
+harness	mast-multi-agent-failure-taxonomy	import	evaluation/mast-multi-agent-failure-taxonomy
+harness	pinned-goal-acceptance-checks	import	harness/pinned-goal-acceptance-checks
+harness	raw-traces-over-summaries	import	optimization/raw-traces-over-summaries
+harness	reliable-lift-not-mean-lift	import	evaluation/reliable-lift-not-mean-lift
+harness	root-cause-step-localisation	import	evaluation/root-cause-step-localisation
+harness	separate-generator-from-evaluator	import	evaluation/separate-generator-from-evaluator
+harness	trajectory-analysis-beats-outcome-grading	merge	evaluation/agent-eval-outcome-vs-transcript
+harness	unverifiable-loops-rot	import	development/unverifiable-loops-rot
+harness	verify-before-done	import	harness/verify-before-done
+harness	agents-rule-of-two	import	security/agents-rule-of-two
+harness	contain-environment-first	import	security/contain-environment-first
+harness	credentials-outside-the-sandbox	import	security/credentials-outside-the-sandbox
+harness	docker-socket-is-root	import	security/docker-socket-is-root
+harness	hardline-command-floor	import	security/hardline-command-floor
+harness	immutable-agent-guardrails	import	security/immutable-agent-guardrails
+harness	inspect-tool-output-before-context	import	security/inspect-tool-output-before-context
+harness	layered-agent-permission-stack	import	security/layered-agent-permission-stack
+harness	logs-are-untrusted-input	import	security/logs-are-untrusted-input
+harness	prompt-injection-defences-are-bypassable	import	security/prompt-injection-defences-are-bypassable
+harness	staged-command-approval	import	security/staged-command-approval
+harness	untrusted-input-cannot-trigger-actions	import	security/untrusted-input-cannot-trigger-actions
+harness	brain-hands-session-decoupling	import	harness/brain-hands-session-decoupling
+harness	durable-approval-state	import	harness/durable-approval-state
+harness	effect-sandwich	import	orchestration/effect-sandwich
+harness	exactly-once-only-after-journaling	import	orchestration/exactly-once-only-after-journaling
+harness	externalised-progress-artifacts	import	knowledge/externalised-progress-artifacts
+harness	journal-then-replay-durable-execution	import	orchestration/journal-then-replay-durable-execution
+harness	one-unit-of-work-per-session	import	orchestration/one-unit-of-work-per-session
+harness	replay-safe-tool-annotation	import	harness/replay-safe-tool-annotation
+harness	single-writer-state-store	merge	orchestration/single-threaded-writes
+harness	start-of-session-smoke-test	import	orchestration/start-of-session-smoke-test
+harness	task-ownership-tree-abort-propagation	import	orchestration/task-ownership-tree-abort-propagation
+harness	unknown-state-on-resurrection	import	harness/unknown-state-on-resurrection
+harness	degradation-ladder	import	orchestration/degradation-ladder
+harness	deterministic-score-gates-llm-diagnosis	import	orchestration/deterministic-score-gates-llm-diagnosis
+harness	diagnose-by-default-act-by-exception	import	harness/diagnose-by-default-act-by-exception
+harness	envelope-bounded-autonomy	import	harness/envelope-bounded-autonomy
+harness	external-supervisor-over-self-diagnosis	import	orchestration/external-supervisor-over-self-diagnosis
+harness	full-trace-remediation-audit	import	harness/full-trace-remediation-audit
+harness	headless-worker-tiering	merge	harness/diagnose-by-default-act-by-exception
+harness	known-good-baseline-comparison	import	evaluation/known-good-baseline-comparison
+harness	level-triggered-reconcile-loop	import	orchestration/level-triggered-reconcile-loop
+harness	llm-proposes-code-applies	import	harness/llm-proposes-code-applies
+harness	llm-sre-agents-low-success	import	evaluation/llm-sre-agents-low-success
+harness	narrow-repair-verb-set	import	harness/narrow-action-verb-set
+harness	owner-validation-decides-repair-success	import	evaluation/owner-validation-decides-success
+harness	practise-repair-with-fault-injection	import	evaluation/practise-with-fault-injection
+harness	supervision-tree-escalation	import	orchestration/supervision-tree-escalation
+harness	no-in-process-self-repair	merge	orchestration/external-supervisor-over-self-diagnosis
+harness	health-ok-is-not-healthy	merge	evaluation/owner-validation-decides-success
+harness	doctor-detect-repair-contract	merge	harness/diagnose-by-default-act-by-exception
+harness	openclaw-triage-agent-handoff	merge	security/logs-are-untrusted-input
+harness	hermes-self-authored-skill-drift	import	instructions/self-authored-skill-drift
+harness	basic-resources-first-check	drop	general ops/SRE practice, not agent engineering
+harness	compose-health-not-restart-trigger	drop	Docker Compose product behaviour
+harness	composite-weak-signal-detection	drop	runtime monitoring practice (out of scope)
+harness	stop-intake-first	drop	general incident practice, not agent engineering
+harness	bounded-embedded-repair-turn	drop	OpenClaw product specifics
+harness	config-last-known-good	drop	OpenClaw product specifics
+harness	content-free-otlp-health-export	drop	Hermes product specifics / runtime monitoring
+harness	custodian-five-step-playbook	drop	OpenClaw product specifics
+harness	gateway-token-is-root	drop	OpenClaw product specifics
+harness	hermes-agent-architecture	drop	Hermes product specifics
+harness	liveness-startup-readiness-split	drop	OpenClaw product specifics
+harness	never-copy-live-sqlite	drop	product ops specifics
+harness	openclaw-gateway-architecture	drop	OpenClaw product specifics
+harness	upgrade-migration-is-one-way	drop	OpenClaw product specifics
+harness	vendor-built-in-restart-loops	drop	product ops specifics
+harness	harness-engineering-index	drop	hub/index note (wiki rules)
+harness	moc-*	drop	map-of-content hub notes (wiki rules)
+skills	asset-rush	import	instructions/asset-rush
+skills	context-load-versus-cognitive-load	import	instructions/context-load-versus-cognitive-load
+skills	leading-words-in-agent-instructions	import	instructions/leading-words-in-agent-instructions
+skills	lean-skill-instructions	import	instructions/lean-skill-instructions
+skills	skill-as-repeated-correction	import	instructions/skill-as-repeated-correction
+skills	completion-criterion	import	instructions/completion-criterion
+skills	context-pointer	import	instructions/context-pointer
+skills	grilling-the-design-tree	import	development/grilling-the-design-tree
+skills	information-hierarchy	import	instructions/information-hierarchy
+skills	model-invoked-versus-user-invoked-skills	import	instructions/model-invoked-versus-user-invoked-skills
+skills	negation-in-agent-instructions	import	instructions/negation-in-agent-instructions
+skills	out-of-scope-records	import	development/out-of-scope-records
+skills	premature-completion	import	instructions/premature-completion
+skills	router-skill	import	instructions/router-skill
+skills	sediment	import	instructions/sediment
+skills	shared-language-glossary	import	instructions/shared-language-glossary
+skills	single-source-of-truth-and-cache	import	instructions/single-source-of-truth-and-cache
+skills	smart-zone	import	context/smart-zone
+skills	splitting-skills	import	instructions/splitting-skills
+skills	steering-files-as-navigation-pointers	import	instructions/steering-files-as-navigation-pointers
+skills	thin-orchestrator-skills	import	instructions/thin-orchestrator-skills
+skills	findings-report	drop	report, not a concept (mined for sources only)

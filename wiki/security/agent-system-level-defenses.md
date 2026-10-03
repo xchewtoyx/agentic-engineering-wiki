@@ -44,6 +44,16 @@ defenses alone are insufficient. System-level controls include:
   warning for emerging exploitative behavior before it shows up against real
   targets.
 
+These controls are not equally strong. Deterministic environment boundaries
+should come first and model-layer steering second
+([contain at the environment layer first](contain-environment-first.md)),
+because model-layer defences are routinely bypassed by adaptive attacks
+([injection defences are bypassable](prompt-injection-defences-are-bypassable.md)).
+Production harnesses combine them as a
+[layered agent permission stack](layered-agent-permission-stack.md), and the
+[agents Rule of Two](agents-rule-of-two.md) says when the stack must include a
+human.
+
 These are harness blast-radius limits for model-generated actions, complementing
 [defensive prompt engineering](defensive-prompt-engineering.md) and
 [indirect prompt injection](indirect-prompt-injection.md) mitigations. Open

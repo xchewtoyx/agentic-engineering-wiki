@@ -12,6 +12,8 @@ def on_page_markdown(markdown, page, **kwargs):
     parts = []
     if description:
         parts.append(f'<p class="lede"><em>{html.escape(description.strip())}</em></p>\n')
+    if meta.get("evidence"):
+        parts.append(f'<p class="evidence"><strong>Evidence:</strong> {html.escape(str(meta["evidence"]))}</p>\n')
     parts.append(markdown)
     if sources:
         items = "\n".join(

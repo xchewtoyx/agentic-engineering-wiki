@@ -24,7 +24,10 @@ LLM, check whether it needs one at all:
 This is the task-level instance of the same principle
 [progressive agent architecture](progressive-agent-architecture.md) applies at
 the system level: don't reach for the more general, more expensive tool when
-a narrower one already solves the problem. Reserve
+a narrower one already solves the problem. Deciding whether a monitored system
+has a problem at all is one such task: a
+[deterministic score](deterministic-score-gates-llm-diagnosis.md) should gate
+any LLM diagnosis. Reserve
 [templated-prompt](../prompting/templated-prompt-task.md) and
 [tool-based](../harness/forced-tool-choice-extraction.md) task implementations for the
 tasks that genuinely need an LLM's language understanding or generation.

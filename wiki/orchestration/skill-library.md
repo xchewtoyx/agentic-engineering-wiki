@@ -16,7 +16,8 @@ candidates for composition into a larger composite tool. Voyager-style systems
 go further with a **skill manager**: newly created skills (often programs) that
 helped complete a task are added to a skill library — conceptually an evolving
 extension of the [tool inventory](../harness/tool-inventory.md) — for reuse on future
-tasks.
+tasks. Because such skills are agent-authored, they can quietly drift out of
+date or out of policy ([self-authored skill drift](../instructions/self-authored-skill-drift.md)).
 
 This is external memory for capabilities, not just facts: the harness grows the
 action repertoire from successful trajectories. Pair with

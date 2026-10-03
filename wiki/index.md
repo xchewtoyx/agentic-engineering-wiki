@@ -1,5 +1,6 @@
 # Concept
 
+* [Agent = Model + Harness](agent-equals-model-plus-harness.md) - An agent's behaviour comes from the model weights plus all the non-weight runtime code around them (loop, tools, context, safety, orchestration, extensions), and that harness can be engineered independently of the model.
 * [Autoregressive Generation](autoregressive-generation.md) - A model produces one committed token at a time with no ability to pause, backtrack, or edit — any correction has to be engineered on top, not expected from the raw generation process.
 * [Chat vs. Completion Tradeoffs](chat-vs-completion-tradeoffs.md) - Chat models buy unambiguous turn-taking and instruction compliance at the cost of alignment tax, excess chattiness, and loss of expressive range.
 * [ChatML Format](chatml-format.md) - A markup language tagging conversation turns with roles — system, user, assistant — that chat models are fine-tuned to complete unambiguously.
@@ -14,6 +15,8 @@
 * [Generation Repetition Trap](generation-repetition-trap.md) - Once a repetitive pattern starts by chance, continuing it is statistically more likely at every subsequent step than breaking it, since the model has no mechanism for getting bored.
 * [Hallucination](hallucination.md) - A model cannot internally distinguish a recalled fact from a plausible invention, so confident-sounding fabrication is a structural property of generation, not an occasional bug.
 * [Harness as a Performance Lever](harness-as-performance-lever.md) - Holding the base model fixed, harness design alone materially shifts task completion — and the best harness is model-specific, so it must be re-adapted every time the base model changes.
+* [Harness Components Encode Stale Assumptions](harness-assumptions-go-stale.md) - Each harness component encodes an assumption about something the model cannot do, so components should be re-tested and removed when the model changes, as with dropped context resets and an 80% system-prompt cut.
+* [Inner and Outer Harness](inner-and-outer-harness.md) - "Harness" names both the agent runtime (loop, tools, context) and the repository and environment the agent works in (AGENTS.md, linters, tests, observability), and a team running agents usually has to engineer both.
 * [LLM Agent](llm-agent.md) - An LLM agent is a model that perceives an environment and acts on it through a tool inventory, with the model itself serving as the planner.
 * [LLM Application Loop](llm-application-loop.md) - An LLM application is a transformation layer converting a user's problem into a document the model completes, then converting the completion back.
 * [LLM Inference Latency Metrics (TTFT, TPOT)](llm-inference-latency-metrics.md) - LLM latency splits into time to first token (driven by prompt length) and time per output token (paid on every generated token), so prompt and harness choices move the two halves independently.
@@ -35,6 +38,7 @@
 * [Stop Sequences](stop-sequences.md) - Halt generation at known end markers server-side (or cancel a stream) so postscripts never burn tokens after the extractable answer is complete.
 * [Subtoken Task Avoidance](subtoken-task-avoidance.md) - A model can't examine or manipulate individual letters within its own tokens, so any task requiring that should be handled outside the LLM.
 * [Temperature and Sampling](temperature-and-sampling.md) - A model computes a full probability distribution over the next token, and sampling — controlled by temperature — decides how faithfully generation follows versus deviates from the single most likely choice.
+* [Thin vs Thick Harness](thin-vs-thick-harness-debate.md) - Model-lab voices argue capability makes scaffolding redundant while harness builders show large harness-only gains, and the resolution is that harness thickness should track model capability and how verifiable the task is.
 * [Token Boundary Inertness](token-boundary-inertness.md) - Tokenizing two concatenated strings together can yield a different token count than tokenizing them separately, so token budgets aren't additive.
 * [Tokenization Fundamentals](tokenization-fundamentals.md) - LLMs process text as deterministic multicharacter tokens, not letters, which makes token count — not character count — the real unit of prompt length.
 * [Truth Bias](truth-bias.md) - A model presented with a false premise tends to continue assuming it's true rather than self-correcting, because self-correcting documents are rare in training data.
@@ -46,6 +50,7 @@
 * [Agentic Development](development/) - How do humans build software with agents? Spec fidelity and ambiguity, spec-driven synthesis, coding-agent patch discipline and human-agent collaboration patterns.
 * [Evaluation](evaluation/) - How do you know it works? Graders, eval suites, pass@k, offline proxies, ablation design and eval hygiene.
 * [Harness & Tools](harness/) - What does the agent see and touch? Agent-computer interfaces, tool definitions and inventories, function calling, observation design, episode prompt stacks, approval gates and MCP.
+* [Instructions & Skills](instructions/) - How do you write standing agent instructions (AGENTS.md and steering files, skills, glossaries) that load cheaply and steer well? Per-call prompt text belongs in prompting/.
 * [Knowledge & Memory](knowledge/) - What lives outside the window, and how does it get back in? Retrieval-augmented generation, retrieval and query construction, agent memory tiers, and knowledge-base architecture and maintenance.
 * [Optimization](optimization/) - How does the system get improved automatically or improve itself? Textual gradients, DSPy-style compilation, harness evolution and self-adapting contexts.
 * [Orchestration](orchestration/) - How are model calls and agents composed over time? ReAct and Reflexion loops, planning, workflows and routing, multi-agent architectures and delegation.

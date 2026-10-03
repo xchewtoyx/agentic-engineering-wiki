@@ -22,7 +22,7 @@ concept and summary pages: the agent holds write authority, revises pages as
 evidence arrives, and is responsible for consistency and de-duplication, while
 humans mostly read it (see
 [human-agent knowledge roles](human-agent-knowledge-roles.md)). The schema, typically
-a repository instruction file such as `AGENTS.md` or `CLAUDE.md`, co-evolves
+a [repository instruction file](../instructions/steering-files-as-navigation-pointers.md) such as `AGENTS.md` or `CLAUDE.md`, co-evolves
 with the system as conventions and workflows are refined, keeping maintainer
 behaviour consistent across sessions.
 
