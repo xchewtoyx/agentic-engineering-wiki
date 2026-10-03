@@ -30,4 +30,5 @@ exclude_docs: |
 validation:
   links:
     not_found: warn
-    unrecognized_links: warn
+    # okf index links folders as `name/`; these resolve to section pages on the site.
+    unrecognized_links: info

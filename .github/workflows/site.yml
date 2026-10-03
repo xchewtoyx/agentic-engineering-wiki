@@ -29,7 +29,11 @@ jobs:
       - name: Check generated indexes are current
         run: |
           okf index --bundle agentic-engineering --recurse
-          git diff --exit-code -- 'wiki/**/index.md' 'wiki/index.md'
+          if [ -n "$(git status --porcelain -- wiki)" ]; then
+            echo "Generated indexes are stale; run: okf index --bundle agentic-engineering --recurse"
+            git status --porcelain -- wiki
+            exit 1
+          fi
       - name: Build site
         run: mkdocs build --strict
       - uses: actions/upload-pages-artifact@v3
