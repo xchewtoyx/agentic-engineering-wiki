@@ -48,8 +48,8 @@ Grading the outcome does not make the transcript worthless. An outcome score
 answers one question, whether the final state matched the goal, so a run that
 cheated, took a dangerous action or succeeded despite a broken tool scores the
 same as a clean one. The Holistic Agent Leaderboard (HAL) study ran 21,730
-rollouts across nine models and nine benchmarks, then analysed 2.5 billion
-tokens of logs across 1,634 transcripts with an automated log-analysis tool.
+rollouts across nine models and nine benchmarks, then analysed a subset of
+1,634 transcripts with an automated log-analysis tool.
 It found what no outcome score showed:
 
 - eight cases of agents locating gold answers by finding the benchmark itself

@@ -2,9 +2,9 @@
 type: concept
 title: MAST Multi-Agent Failure Taxonomy
 description: >
-  Annotated traces show multi-agent failures come mostly from system design
-  and inter-agent misalignment rather than the model, and targeted role or
-  verification fixes give only modest gains.
+  Annotated traces sort multi-agent failures into system design, inter-agent
+  misalignment and task verification, and targeted prompt or topology fixes
+  give only modest gains.
 evidence: strong
 sources:
   - title: "Why Do Multi-Agent LLM Systems Fail?"
@@ -25,17 +25,24 @@ frameworks and arrived at fourteen failure modes in three categories:
 | Task verification | 23.5% |
 
 Annotation was reliable, with human inter-annotator agreement of κ = 0.88 and
-an LLM annotator reaching κ = 0.77. The authors then tried targeted
-interventions on one framework with model and prompt held constant: clearer
-role specification gave +9.4% and stronger high-level verification gave
-+15.6%. They describe these gains as modest and read them as a sign that
-deeper redesign is needed.
+an LLM annotator reaching κ = 0.77. The three categories partition the
+taxonomy itself, so the shares show how failures distribute across those
+categories. They do not compare system-caused failures against model-caused
+ones. "Design matters more than the model" is the authors' interpretation,
+not a measured comparison.
+
+The authors also tried two targeted interventions on one framework (ChatDev)
+with the underlying model fixed. Improved role specification in the prompts
+gave +9.4 points, and a changed topology with stronger verification gave
++15.6 points. Both changed the prompts or the topology, so neither is a
+controlled test of a single factor. The authors describe the gains as modest
+and read them as a sign that deeper redesign is needed.
 
 This is a peer-reviewed benchmark paper with good agreement figures, so the
 category split is reasonably trustworthy for the frameworks it covered.
 
-Most failures sit in the design and verification layers, not in the model.
-Where several agents act on the same systems, coordination is itself a source
+Read as a practitioner's checklist, the taxonomy points at the design and
+verification layers, which you control. Where several agents act on the same systems, coordination is itself a source
 of failure. That argues for
 [single-threaded writes](../orchestration/single-threaded-writes.md), for
 recording every cross-role decision on a

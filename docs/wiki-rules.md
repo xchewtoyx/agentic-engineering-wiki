@@ -111,7 +111,10 @@ sources:
   that rest on empirical or practitioner sources (vendor and practitioner
   blogs, preprints, cookbooks, interviews) rather than established primary
   literature. Leave it off notes drawn from peer-reviewed papers or
-  standard texts.
+  standard texts. The rating describes the note as a whole. If a note's
+  core rests on primary literature and only some added claims come from
+  preprints or practitioner sources, leave the field off and attribute
+  those claims in prose (for example "a 2026 preprint reports").
   - `strong`: official documentation, peer-reviewed results, or several
     independent sources that agree.
   - `moderate`: credible practitioner or vendor engineering reports with
