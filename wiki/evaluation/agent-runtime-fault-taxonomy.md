@@ -40,10 +40,15 @@ systems. The class split is plausible for any containerised agent deployment
 inference.
 
 For an operations or repair agent, the implication is to treat
-diagnosability as uneven by class. Availability faults such as a dead tool or
-a timed-out dependency are reliably recognised and are candidates for bounded
-automatic action, while policy and corruption faults should default to
-escalation, a split that fits
+diagnosability as uneven by class. This benchmark does not show any class to be
+reliably diagnosed. Its per-class table uses a looser ranking metric than
+top-1 accuracy, results for some availability faults vary widely across
+detector models, and the best overall top-1 fault-type accuracy is low. Use
+the class split only to decide what to measure first. Availability faults
+such as a dead tool or a timed-out dependency are the likeliest candidates
+for bounded automatic action, but admit a class only once your own setting
+shows reliable top-1 diagnosis and localisation for it. Policy and corruption
+faults should default to escalation. This split fits
 [envelope-bounded autonomy](../harness/envelope-bounded-autonomy.md). The
 paired-reference result supports
 [known-good baseline comparison](known-good-baseline-comparison.md), the low
