@@ -27,7 +27,13 @@ the current phase so they do not distract the planner under
 Without external tools, an agent is limited to what the base model can do alone
 (for example, generate text). With tools, actions split into perception
 (read-only) and environment change (write) under
-[agent tool categories](agent-tool-categories.md). Prefer clear, simple tool
+[agent tool categories](agent-tool-categories.md). Two practitioner positions
+pull the sizing decision in opposite directions: coding-agent builders argue
+for a [minimal, general tool surface](minimal-general-tool-surface.md) (a few
+tools plus a shell), while security guidance for agents that change live
+systems argues for a [narrow action verb set](narrow-action-verb-set.md) with no
+raw shell; a common resolution is general tools for reading and narrow verbs
+for writing. Prefer clear, simple tool
 APIs: ambiguous or overly complex functions increase
 [planning failure modes](../orchestration/agent-planning-failure-modes.md) such as invalid
 parameters or wrong values.

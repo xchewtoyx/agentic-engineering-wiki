@@ -20,6 +20,9 @@ around a **fixed LM** (weights unchanged; actions, docs, and feedback adapt):
 3. **Informative but concise feedback** — show substantive state/effects (for
    example the revised file window after edit) without dumping irrelevant
    detail that burns tokens under [lost in the middle](../context/lost-in-the-middle.md).
+   On the failure path this means
+   [failures returned as actionable feedback](failures-returned-as-actionable-feedback.md):
+   errors, timeouts and hangs reported in a form the model can act on.
 4. **Guardrails** — catch common mistakes early (syntax checks, result caps)
    so recovery is fast rather than letting
    [compound mistake amplification](../orchestration/compound-mistake-amplification.md) run.

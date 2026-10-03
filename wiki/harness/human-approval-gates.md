@@ -35,6 +35,18 @@ interception, not by instructing the model to ask first — application
 interception, not prompt-level pleading. Prompted requests for permission can
 be skipped by the model under the same failure modes as any other
 instruction; an approval step the harness enforces before dispatch cannot be.
+Once given, an approval is state that must survive crashes and restarts
+([durable approval state](durable-approval-state.md)).
+
+Per-action gates sit inside two broader decisions for agents that act on live
+systems. One is the default posture when nothing has been approved, which
+should be read-only ([diagnose by default, act by
+exception](diagnose-by-default-act-by-exception.md)). The other is which
+situations the agent may handle alone at all: only those matching a prepared
+runbook, with anything outside that envelope escalated as a planned step
+([autonomy bounded by the prepared envelope](envelope-bounded-autonomy.md)).
+Below the gates, some actions should be unavailable whatever is approved
+([hardline command floor](../security/hardline-command-floor.md)).
 
 Human involvement need not be limited to pre-execution approval. Queue human
 reviewers for [workflow tasks](../orchestration/task-io-schema-design.md) whose output needs

@@ -28,4 +28,10 @@ Because tool outputs often sit below user text in an
 lowest privilege specifically targets this class. Still pair ranking with
 sandboxing, [human approval gates](../harness/human-approval-gates.md) on destructive
 tools, and treating all retrieved text as untrusted under
-[defensive prompt engineering](defensive-prompt-engineering.md).
+[defensive prompt engineering](defensive-prompt-engineering.md). The
+architectural answer is that once untrusted text is in context it must be
+unable to trigger consequential actions
+([untrusted input must not trigger actions](untrusted-input-cannot-trigger-actions.md)).
+Operational data is an easily overlooked channel: log lines and alerts record
+attacker-chosen request fields
+([logs are untrusted input](logs-are-untrusted-input.md)).

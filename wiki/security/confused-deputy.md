@@ -39,7 +39,12 @@ matter most bound what borrowing it can achieve:
   [tool inventory](../harness/tool-inventory.md) and the narrowest, most
   functional tool signatures the task needs (a `send_reply(thread_id, body)`
   rather than a general `send_email(to, …)`; read-only SQL where writes aren't
-  required), so a hijacked instruction has few possible consequences.
+  required), so a hijacked instruction has few possible consequences. For
+  agents that act on live systems this becomes a
+  [narrow action verb set](../harness/narrow-action-verb-set.md) in place of a
+  shell, and the [agents Rule of Two](agents-rule-of-two.md) says which
+  combinations of authority and untrusted input are too dangerous to leave
+  unattended.
 - **Out-of-band confirmation for high-impact actions** — route irreversible or
   externally visible actions through [human approval
   gates](../harness/human-approval-gates.md), so a second, independent signal is

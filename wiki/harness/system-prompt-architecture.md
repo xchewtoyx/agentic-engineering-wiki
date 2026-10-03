@@ -14,7 +14,10 @@ persona, policies) and a **user prompt** (the concrete task and user content).
 Under the hood they are concatenated, but models are often post-trained to
 prioritize the system prompt (instruction hierarchy), and leading placement
 itself can help. Roles assigned in the system prompt also help maintain
-character across turns.
+character across turns. In coding-agent harnesses, standing repository
+instructions such as `AGENTS.md` are usually injected here too, which is why
+they should stay short [navigation pointers](../instructions/steering-files-as-navigation-pointers.md)
+rather than manuals.
 
 The combined strings must follow the model's **chat template** — special tokens
 and headers defined by the model developer. That is distinct from an
