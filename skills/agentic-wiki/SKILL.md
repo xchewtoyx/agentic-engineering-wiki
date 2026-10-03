@@ -6,7 +6,7 @@ description: Look up agentic engineering knowledge — prompting, context and me
 # Agentic engineering wiki
 
 The wiki is the `wiki/` folder at this plugin's root (two levels up from this
-file: `../../wiki/`). It holds ~520 atomic concept notes. Each note has a
+file: `../../wiki/`). It holds atomic concept notes. Each note has a
 `title`, a one-sentence `description`, and `sources:` frontmatter, and
 connects to related notes with inline relative links.
 

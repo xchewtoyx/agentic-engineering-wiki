@@ -13,7 +13,7 @@ books and posts it was distilled from.
 ## Layout
 
 ```
-wiki/                 the bundle: ~520 concept notes
+wiki/                 the bundle: atomic concept notes
 ├── *.md              overview concepts and model fundamentals (start here)
 ├── prompting/        what text you write for a call
 ├── instructions/     standing instructions: AGENTS.md, skills, steering files
