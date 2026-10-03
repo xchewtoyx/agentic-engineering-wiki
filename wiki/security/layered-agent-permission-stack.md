@@ -3,8 +3,9 @@ type: concept
 title: Layered Agent Permission Stack
 description: >
   Production harnesses layer execution policy, lifecycle hooks, LLM or human
-  approval and OS sandboxing; guardrails can run optimistically in parallel, and
-  a reasoning-blind classifier can replace per-action human approval.
+  approval and OS sandboxing; cheap guardrails can run optimistically in
+  parallel where early execution is harmless, and a reasoning-blind classifier
+  can replace per-action human approval.
 evidence: moderate
 sources:
   - title: "Harness Engineering (source-code study of agent harnesses)"
@@ -43,8 +44,12 @@ are approved one by one, with a deny always beating an allow (see
 Two design moves make the stack cheaper to run. OpenAI's practical guide
 describes guardrails as layered defences (relevance and safety classifiers,
 personal-data filtering, moderation, per-tool risk ratings, rules and output
-validation), and the Agents SDK runs them optimistically: the agent proceeds
-while tripwires run in parallel. The guide names two triggers for human
+validation), and the Agents SDK can run input guardrails optimistically: the
+agent proceeds while tripwires run in parallel. Optimistic mode does not
+enforce a boundary. By the time a tripwire fires, the agent may already have
+consumed tokens and executed tools. Run any check that screens for unsafe
+input or actions in blocking mode, before the agent acts, and reserve
+parallel mode for checks where early tool execution is harmless. The guide names two triggers for human
 intervention, exceeded failure thresholds and high-risk actions. Anthropic's
 auto mode goes further and replaces the human approver with a two-stage
 transcript classifier, a fast single-token filter followed by chain-of-thought

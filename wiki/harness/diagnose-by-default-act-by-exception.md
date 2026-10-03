@@ -76,10 +76,16 @@ posture as an exceptional, approved action. Structured findings and exit codes
 are also the cheap score that decides whether to wake an LLM at all (see
 [a deterministic score gates LLM diagnosis](../orchestration/deterministic-score-gates-llm-diagnosis.md)).
 
-**Headless coding agents make a natural diagnose tier.** The coding-agent
-command-line interfaces ship different safe defaults. Cursor's `-p` mode only
-proposes file changes unless `--force` is passed (its docs do not describe
-sandboxing). Codex `exec` defaults to a read-only sandbox, with
+**Headless coding agents make a natural diagnose tier, but only with enforced
+confinement.** The coding-agent command-line interfaces ship different
+defaults, and those defaults change between versions. Don't treat a missing
+"force" or "yes" flag as read-only. Cursor's non-interactive print mode, for
+example, has been documented both as proposing changes unless `--force` is
+passed and as having full write and shell access. A diagnose tier should
+select an explicit read-only or ask-only mode where the CLI has one, restrict
+tools by allow-list, and run inside a sandbox whose filesystem and network
+permissions enforce the read-only boundary whatever the CLI does. Check each
+CLI's current documentation for the version you deploy. Codex `exec` defaults to a read-only sandbox, with
 `workspace-write` and `danger-full-access` as explicit escalations. Claude Code
 `-p` supports `--allowedTools` rules and a `dontAsk` mode that denies anything
 that would prompt. Two loading behaviours matter. Without `--bare`, Claude
@@ -87,8 +93,9 @@ Code's `-p` runs a repository's hooks and `.mcp.json` servers with no trust
 dialog, and Cursor Automations warn that memories persist across runs and
 advise connecting only trusted Model Context Protocol servers. Building two
 tiers from these defaults is an inference, not a documented product pattern: a
-diagnose tier that runs each CLI in its read-only or propose-only mode with a
-narrow tool allow-list and machine-readable output, and a separate act tier
+diagnose tier that runs each CLI in an explicitly selected read-only mode,
+with a narrow tool allow-list, sandbox-enforced read-only permissions and
+machine-readable output, and a separate act tier
 that runs bare (no repository hooks or MCP servers), under a distinct identity,
 with elevation granted per action for a limited time, as Azure SRE Agent's
 On-Behalf-Of elevation does. Neither tier should hold long-lived credentials
