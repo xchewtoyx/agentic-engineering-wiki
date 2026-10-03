@@ -35,19 +35,28 @@ When a client retries a submission with the same `requestId`, the existing
 submission is returned rather than a new one created, so the key works as an
 idempotency key. On Hacker News a commenter disputed the exactly-once wording,
 and Pi's author Mario Zechner replied that `requestId` is an idempotency key.
-The fair reading is that Pi Durable gives at-least-once execution of effects
-with an explicit interruption signal, and exactly-once only for its own commits
-and keyed submissions.
+The fair reading is narrower still. After a crash, Pi Durable reruns only
+tools declared `replay: "safe"`. Any other interrupted tool is not rerun: the
+model receives an `interrupted` result, and the effect may have happened zero
+times or once. Exactly-once holds only for the harness's own durable commits
+and for `requestId`-keyed submissions. Interrupted effects have an unknown
+outcome, and the agent has to re-inspect real state before deciding what to
+do.
 
 The evidence is weak: one unanswered issue, a vendor blog claim, and a forum
 dispute. It is enough to distrust the strong reading of "exactly once", not to
 quantify how often duplicates occur.
 
-The safe design assumption for any agent is at-least-once for every external
-action. A reasonable design, not a sourced result, is to give each
-side-effecting action an idempotency key (for example a hash of task, action
-and target) recorded before acting, and to follow Cloudflare's rule of checking
-whether an operation already completed before repeating it. The surrounding
+The safe design assumption for any agent is that an external action
+interrupted by a crash may have run zero times, once or (where the engine
+re-executes) more than once. A reasonable design, not a sourced result, is to
+give each side-effecting action an idempotency key recorded before acting.
+The key must identify one logical invocation and stay stable across retries
+of that invocation, for example a durable operation or sequence ID. A hash of
+only task, action and target is not enough, because a task that legitimately
+repeats an action (a second restart after a second failure) would have its
+later action suppressed as a duplicate. Then follow Cloudflare's rule of
+checking whether an operation already completed before repeating it. The surrounding
 mechanics are in [the effect sandwich](effect-sandwich.md),
 [journal-then-replay](journal-then-replay-durable-execution.md) and [unknown
 state on resurrection](../harness/unknown-state-on-resurrection.md); approvals
