@@ -49,4 +49,9 @@ from artifacts created or heavily revised after the training cutoff, and
 refresh it as newer models shift that cutoff. This reduces rather than
 eliminates memorization risk: post-cutoff facts may still enter later training
 sets, and a mature reference artifact may encode far more editing effort than
-the evaluated one-pass workflow.
+the evaluated one-pass workflow. How much protection you get depends on how
+accurately the model's cutoff is known and on what its training data actually
+contained. State the temporal boundary, meaning the model and the cutoff it
+was checked against, as part of any claim made from the eval. Treat it as a
+scoped control rather than proof that the task measures from-scratch
+capability, and rebuild the boundary whenever the evaluated model changes.

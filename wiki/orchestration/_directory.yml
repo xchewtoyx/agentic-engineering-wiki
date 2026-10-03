@@ -1,0 +1,4 @@
+type: _directory
+title: Orchestration
+description: >-
+  How are model calls and agents composed over time? ReAct and Reflexion loops, planning, workflows and routing, multi-agent architectures and delegation.

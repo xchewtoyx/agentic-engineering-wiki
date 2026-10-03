@@ -52,7 +52,8 @@ asymmetry is a first-order input to [model selection
 tradeoffs](model-selection-tradeoffs.md) and to [context gathering latency
 tiers](context/context-gathering-latency-tiers.md): a design that reads a large
 amount of context but generates only a short completion pays a very different
-latency cost than one that reads little but generates at length.
+latency cost than one that reads little but generates at length — the split
+[TTFT and TPOT](llm-inference-latency-metrics.md) make measurable.
 
 One consequence of never being able to reconsider a committed token is the
 [generation repetition trap](generation-repetition-trap.md): once a pattern

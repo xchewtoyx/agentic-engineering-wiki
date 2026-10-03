@@ -39,7 +39,8 @@ at once:
   much faster than generating](autoregressive-generation.md).
 - Computational cost scales with length in both directions, which is why
   model-as-a-service providers typically charge per token processed and
-  produced.
+  produced — see [LLM token and cost metrics](llm-token-and-cost-metrics.md)
+  for what that means for agent design.
 - Token count determines the **context window** — the total prompt-plus-
   completion length a model can handle in one call, typically measured in
   thousands of tokens. Context windows keep growing, but application authors

@@ -38,3 +38,19 @@ would raise an eyebrow at it. The model will simply build on the false premise
 as though it were true. Responsibility for prompt correctness therefore falls
 entirely on the application or prompt author; the model provides no safety
 net against feeding it something wrong.
+
+Because the model provides no safety net, verification has to target what the
+model was given, not only what it produced. When reviewing an output, check
+its inputs: an unquestioned false premise upstream turns into a confidently
+stated claim downstream, and nothing in the output signals that anything went
+wrong. In a multi-step pipeline where one call's output feeds the next, every
+hop is a point where a bad premise can enter and then be carried forward
+silently. Two readings to avoid:
+
+- **Taking an in-character answer as corroboration.** A model answering
+  fluently from a premise shows only that the premise went unquestioned. It
+  is not evidence that the premise is true.
+- **Delegating the check to the model.** An instruction like "point out
+  anything false in the following" does not replace checking the input
+  yourself. The same bias weakens the model's willingness to flag a premise
+  that is stated as established fact.

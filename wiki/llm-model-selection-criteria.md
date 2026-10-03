@@ -39,7 +39,7 @@ non-negotiable. Filter candidates against hard latency and cost thresholds
 first, then pick the best quality among survivors — do not average a
 deal-breaking p90 latency into a soft "overall score." Write each criterion
 as *metric + benchmark + hard requirement + ideal* (e.g. cost per output
-token hard `< $30/1M`, ideal `< $15/1M`; time-to-first-token p90 hard
+token hard `< $30/1M`, ideal `< $15/1M`; [time-to-first-token](llm-inference-latency-metrics.md) p90 hard
 `< 200ms`; factual-consistency internal score hard `> 0.8`). Distinguish
 must-have vs nice-to-have latency: everyone says they want lower latency if
 asked, but for many products high latency is an annoyance rather than a

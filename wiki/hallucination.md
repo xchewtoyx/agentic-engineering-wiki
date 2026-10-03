@@ -12,6 +12,8 @@ sources:
     resource: "AI Engineering (Chip Huyen), ch. 2"
   - title: "AI Engineering: Building Applications With Foundation Models"
     resource: "AI Engineering (Chip Huyen), ch. 4"
+  - title: "Taking Testing Seriously"
+    resource: "Taking Testing Seriously (James Bach, Michael Bolton), ch. 7"
 ---
 
 An LLM is a [document-completion engine that mimics its training
@@ -65,7 +67,16 @@ to check) with "...namely George IV, who married Caroline of Brunswick"
 (checkable). Shorter responses also fabricate less simply because there are
 fewer tokens in which to fabricate. The best available posture: "trust but
 verify, minus the trust" — treat every claim as needing independent
-confirmation, not as innocent until proven false. [Context
+confirmation, not as innocent until proven false. Two cheap checks help:
+
+- **Form your own answer first.** Settle on an answer before you read the
+  model's, so its fluency doesn't anchor you
+  ([me-first collaboration](development/me-first-prompt-collaboration.md)).
+- **Re-ask the question differently.** An answer that drifts when the
+  question is rephrased was not well grounded in the first place.
+
+Scale the depth of verification to how opaque the system is and how much
+rides on the claim. [Context
 grounding](context/context-grounding.md) attacks the same problem from the supply
 side, by giving the model the facts it needs so it has less occasion to
 invent them, and [argument hallucination](harness/argument-hallucination.md) is the

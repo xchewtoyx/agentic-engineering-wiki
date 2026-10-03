@@ -9,10 +9,14 @@ sources:
     resource: "LLM Wiki, Why this works and Note"
 ---
 
-As a knowledge base grows, the cost of revising summaries, propagating newer
+Knowledge bases are rarely abandoned because reading or thinking is too
+costly; they die of bookkeeping. As a knowledge base grows, the cost of revising summaries, propagating newer
 evidence, recording contradictions, and maintaining links expands across many
-files. The perceived value of another small update may not grow at the same
-rate, causing humans to defer bookkeeping until the store decays.
+files: one new source can require revisions to 10–15 existing pages. The
+perceived value of another small update may not grow at the same rate, so
+fatigued human curators defer bookkeeping. Outdated, contradictory, and
+orphaned pages then accumulate, readers stop trusting the store, and it is
+abandoned.
 
 An agent can lower the marginal cost of these repetitive, multi-file edits and
 make [persistent synthesis memory](persistent-synthesis-memory.md) economically

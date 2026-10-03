@@ -10,6 +10,8 @@ sources:
     resource: "Demystifying evals for AI agents (Anthropic), How to evaluate AI agents"
   - title: "Assisting in Writing Wikipedia-like Articles From Scratch with Large Language Models"
     resource: "Shao et al. (2024), full paper, pp. 1–27"
+  - title: Observability Engineering
+    resource: "Observability Engineering, 2nd ed. (Majors, Fong-Jones, Miranda), ch. 21"
 ---
 
 Research agents gather, synthesize, and analyze information into an answer or
@@ -49,4 +51,10 @@ judgments are inherently more subjective than a coding agent's test suite,
 these LLM-based rubrics need frequent recalibration against expert human
 judgment — see
 [grounding LLM assessment in human evaluation](grounding-llm-assessment-in-human-evaluation.md)
-— more so than for domains with a firmer objective ground truth.
+— more so than for domains with a firmer objective ground truth. Without
+that recalibration, rubrics drift away from human standards. Automated judges
+report pass or fail but miss the *why*. Human review of sampled outputs
+surfaces new failure modes, which become targeted eval cases through the
+[eval/monitoring feedback loop](eval-monitoring-feedback-loop.md). Before
+relying on a rubric judge alone, quantify its trustworthiness by
+[cross-validating it against an independent metric](llm-judge-cross-validation-against-independent-metric.md).

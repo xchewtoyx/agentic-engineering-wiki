@@ -1,0 +1,4 @@
+type: _directory
+title: Evaluation
+description: >-
+  How do you know it works? Graders, eval suites, pass@k, offline proxies, ablation design and eval hygiene.

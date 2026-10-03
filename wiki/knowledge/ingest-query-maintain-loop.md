@@ -12,10 +12,12 @@ sources:
 Treat external memory as a continuing three-operation loop:
 
 1. **Ingest:** read one immutable source, distil it, revise all affected
-   concepts, and record provenance.
+   concepts (a single source commonly touches 10–15 existing pages), and record
+   provenance. Ingest one source at a time with a human in the loop to steer
+   emphasis, and record the chosen workflow in the schema.
 2. **Query:** retrieve relevant knowledge and synthesize an answer, filing
    valuable new connections back into memory rather than losing them in chat.
-3. **Maintain:** inspect for contradictions, stale claims, missing links,
+3. **Maintain** (sometimes called *lint*): periodically inspect for contradictions, stale claims, missing links,
    orphans, absent concepts, and evidence gaps, then propose repairs or new
    sources.
 

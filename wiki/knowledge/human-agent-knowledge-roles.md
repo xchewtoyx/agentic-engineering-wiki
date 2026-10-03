@@ -14,6 +14,10 @@ select sources, direct inquiry, judge significance, and resolve consequential
 interpretations. Agents perform repeatable bookkeeping: distillation, filing,
 cross-referencing, propagation of revisions, and consistency checks.
 
+The split realizes the Memex idea of a private, curated store linked by
+associative trails: humans choose the trails and the focus, and the agent
+supplies the tireless maintainer the original concept lacked.
+
 Encode this division in the
 [knowledge maintenance operating schema](knowledge-maintenance-operating-schema.md),
 including which mutations require human review. The boundary keeps automation
