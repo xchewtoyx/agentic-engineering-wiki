@@ -1,0 +1,4 @@
+type: _directory
+title: Instructions & Skills
+description: >-
+  How do you write standing agent instructions (AGENTS.md and steering files, skills, glossaries) that load cheaply and steer well? Per-call prompt text belongs in prompting/.
