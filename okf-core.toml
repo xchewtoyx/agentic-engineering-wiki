@@ -1,0 +1,14 @@
+# okf-core configuration: one OKF bundle, wiki/, organised into pillar folders.
+# See docs/wiki-rules.md for authoring rules.
+
+[taxonomy]
+known_types = ["concept"]
+
+[profiles.wiki]
+required_frontmatter = ["title", "description"]
+optional_frontmatter = ["sources"]
+
+[bundles.agentic-engineering]
+bundle_root = "wiki"
+profile = "wiki"
+okf_cache_dir = ".okf-cache"
