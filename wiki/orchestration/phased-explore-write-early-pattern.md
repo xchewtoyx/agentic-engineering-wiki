@@ -41,7 +41,7 @@ step mandatory and early, not a final step the agent might not reach:
    later readers (including the agent's own downstream consumers) can't check
    against the original evidence.
 
-This is the crash-resilience analog of the progressive disclosure that
+This is the crash-resilience analog of the [progressive disclosure](../instructions/progressive-disclosure.md) that
 [Agent Debugger trajectory distillation](../optimization/agent-debugger-trajectory-distillation.md)
 applies to a *reader's* consumption of a large trace corpus — applied here to
 the *writer's* side instead: rather than structuring an existing large

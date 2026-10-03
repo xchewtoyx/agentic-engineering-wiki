@@ -38,8 +38,8 @@ rather than a follow-up question; and clarity produces **consistency** —
 similar inputs get processed the same way — which in turn enables
 optimization, helps users learn what the app can do, and builds trust.
 
-Three rules of thumb for writing the instructions themselves: state positives
-instead of negatives (say what to do, not just what to avoid); bolster
+Three rules of thumb for writing the instructions themselves: [state positives
+instead of negatives](../instructions/negation-in-agent-instructions.md) (say what to do, not just what to avoid); bolster
 commands with a reason, since a stated rationale is followed more reliably
 than a bare command; and avoid absolutes where the underlying rule genuinely
 has exceptions ("kill only rarely, and make sure it's really appropriate" is
