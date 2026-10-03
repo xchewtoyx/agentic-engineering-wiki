@@ -26,7 +26,7 @@ Input: `rgh-sme/agentic-engineering/`, which has 403 concept notes and 1,391
 undirected intra-bundle links (the bundle has no cross-bundle links, per
 wiki-rules). I ran Louvain community detection over the link graph and kept
 the best modularity across 20 seeds × 3 resolutions (Q = 0.58). It found 10
-real communities:
+real communities, plus one singleton (C10):
 
 | #   | n   | Hub notes                                                                      | Reads as                     |
 | --- | --- | ------------------------------------------------------------------------------ | ---------------------------- |
@@ -40,6 +40,7 @@ real communities:
 | C7  | 14  | context-adaptation, generator-reflector-curator-loop, context-collapse         | self-improving contexts (ACE)|
 | C8  | 9   | knowledge-maintenance-operating-schema, ingest-query-maintain-loop             | knowledge-base architecture  |
 | C9  | 9   | spec-fidelity, ambiguity-tax, zero-shot-repository-synthesis                   | spec-driven agentic dev      |
+| C10 | 1   | intention-implementation-consistency-checking                                  | isolated note (no intra-bundle links); mapped by hand to `development/` |
 
 The raw clusters don't make good routing targets. C0 and C2 each mix pillars
 that a reader would look for in different places, and C7–C9 are too small to
