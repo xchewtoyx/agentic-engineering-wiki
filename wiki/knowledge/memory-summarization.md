@@ -27,7 +27,10 @@ short-term footprint. Common approaches under
 Contradiction handling is use-case dependent: default to newer facts, or let a
 judge choose; sometimes keeping multiple perspectives is useful. Summarization
 beats naive [FIFO context eviction](fifo-context-eviction.md) when early goals
-must survive. Under [memory pressure eviction](memory-pressure-eviction.md),
+must survive. Agent harnesses that summarise automatically call this
+compaction; it needs [safeguards](../context/safeguarded-compaction.md) and
+competes with starting fresh from a handoff
+([compaction vs context reset](../context/compaction-vs-context-reset.md)). Under [memory pressure eviction](memory-pressure-eviction.md),
 flush can rebuild a **recursive summary** from the existing summary plus the
 just-evicted messages so goals survive after the FIFO shrinks. For bulk
 corpora outside the chat queue, use

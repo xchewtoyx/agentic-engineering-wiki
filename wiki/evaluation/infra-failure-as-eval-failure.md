@@ -8,6 +8,8 @@ description: >
 sources:
   - title: "Agentic Harness Engineering: Observability-Driven Automatic Evolution of Coding-Agent Harnesses"
     resource: "Agentic Harness Engineering (Lin, Liu, Pan, et al.), App. A"
+  - title: "Infrastructure noise"
+    resource: "Anthropic Engineering, 5 Feb 2026 — https://www.anthropic.com/engineering/infrastructure-noise"
 ---
 
 A rollout can fail two different ways: the agent genuinely fails the task, or
@@ -32,3 +34,24 @@ infra-aborted trials from a mean-tokens-per-trial figure (used in
 trial's token count doesn't represent what a completed trial actually costs
 — the harsher-counting rule applies to the success/failure tally, not to
 every downstream statistic computed from completed trials.
+
+Counting infra failures honestly does not remove them, and they are larger
+than they look. Anthropic's engineering team measured the effect of container
+resource limits on Terminal-Bench 2.0. The most- and least-resourced setups
+differed by 6 percentage points (p < 0.01), and infrastructure error rates
+fell from 5.8% under strict limits to 0.5% with no cap. Scores barely moved
+between one and three times resource headroom (p = 0.40) but rose about 4
+points from three times to uncapped. On SWE-bench, five times the RAM gave
++1.54 points. This is a lab research post with significance tests, not a
+peer-reviewed study.
+
+So CPU and memory limits are part of the harness. The post recommends
+specifying guaranteed allocation and the hard kill threshold separately,
+treating resources as a documented experimental variable (as a
+[harness card](harness-card-disclosure.md) would), and viewing leaderboard
+gaps under about 3 points with suspicion unless the setup is published. The
+same noise bears on claims that the
+[harness is a performance lever](../harness-as-performance-lever.md): small
+harness differences can sit inside it. When diagnosing a single failed run
+rather than scoring a suite, rule out resource kills and out-of-memory events
+before attributing the failure to model behaviour.

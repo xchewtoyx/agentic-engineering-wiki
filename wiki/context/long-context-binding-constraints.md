@@ -9,7 +9,7 @@ sources:
     resource: "Nguyen & Nguyen (2026), ch. 4"
 ---
 
-As foundation models expand context windows into hundreds of thousands or millions of tokens, raw context length ceases to be the primary limitation on agentic development. Ingesting full monorepos or uncurated code dumps triggers [lost in the middle](lost-in-the-middle.md), inflates latency and token expenditure, and increases distraction from irrelevant code paths.
+As foundation models expand context windows into hundreds of thousands or millions of tokens, raw context length ceases to be the primary limitation on agentic development. Ingesting full monorepos or uncurated code dumps triggers [lost in the middle](lost-in-the-middle.md) and [context rot](context-rot.md), inflates latency and token expenditure, and increases distraction from irrelevant code paths.
 
 Practical agentic engineering succeeds within disciplined windows (200k–300k tokens) by shifting focus across three new binding constraints:
 

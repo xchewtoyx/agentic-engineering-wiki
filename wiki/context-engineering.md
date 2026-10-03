@@ -36,7 +36,10 @@ unacted-on for the same reason — see
 it at the point where the model actually decides what to do next instead. For [LLM agents](llm-agent.md), tool
 descriptions, [ReAct](orchestration/react-loop.md) traces, and reflection compete with task
 content — over-large [tool inventories](harness/tool-inventory.md) starve the budget.
-Treat every token of format scaffolding as a cost that must earn its keep.
+Treat every token of format scaffolding as a cost that must earn its keep,
+because quality falls with length well before the window is full
+([context rot](context/context-rot.md)). For agents, the practical toolkit
+reduces to four moves: [write, select, compress, isolate](context/context-write-select-compress-isolate.md).
 When the context itself should improve from the system's own execution
 feedback rather than being hand-tuned, see
 [context adaptation](optimization/context-adaptation.md).

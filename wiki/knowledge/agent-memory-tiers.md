@@ -41,3 +41,10 @@ Long-term memory need not remain a raw retrieval store. A
 [persistent synthesis memory](persistent-synthesis-memory.md) can compile
 relationships across sources once and revise them as knowledge evolves,
 trading query-time reconstruction for ongoing maintenance work.
+
+Two stores outside the window are not memory tiers in this sense, because
+nothing in them is recalled by default: a
+[session log outside the context window](session-log-outside-context-window.md)
+keeps the full record for recovery and audit, and
+[externalised progress artefacts](externalised-progress-artifacts.md) carry the
+state of one long task across sessions.

@@ -40,7 +40,9 @@ ever-larger \(k\). The U-curve parallels psychology's serial-position effect
 even though self-attention can in principle attend anywhere — treat equal
 access as a myth for harness design. If quality falls as context grows,
 shorten before blaming the model, and do not assume a multi-million-token
-window makes placement irrelevant.
+window makes placement irrelevant. Length hurts independently of position too:
+[context rot](context-rot.md) reports degradation with total input length and
+distractor load even on simple tasks.
 
 For [context engineering](../context-engineering.md), put critical instructions
 and key facts at the edges, shorten bloated middles, and treat mid-prompt

@@ -9,6 +9,8 @@ description: >
 sources:
   - title: "Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models"
     resource: "ACE (Zhang et al.), §1, §2.2, Fig. 2, §3, App. C.2"
+  - title: "Hermes Agent docs: Curator"
+    resource: "Nous Research — https://hermes-agent.nousresearch.com/docs/user-guide/features/curator"
 ---
 
 Context collapse is the failure where an evolving context (a learned system
@@ -54,6 +56,20 @@ Design countermeasures:
   "summarize and replace".
 - In offline regression checks of a self-updating harness, track context size
   per step. A sudden large drop is a collapse signature worth gating on.
+
+The lesson generalises to any summary that replaces its source. It is why
+[safeguarded compaction](../context/safeguarded-compaction.md) keeps the full
+history and audits its summaries, why debuggers do better with
+[raw traces than summaries](raw-traces-over-summaries.md), and it bears on
+where a harness sits on the
+[memory strategy spectrum](../knowledge/harness-memory-strategy-spectrum.md).
+It applies directly to agents that write and consolidate their own memory or
+skills. Hermes Agent's Curator, for example, can optionally run a model-based
+consolidation pass over agent-made skills, which is exactly the operation
+that can collapse, and a plausible source of
+[self-authored skill drift](../instructions/self-authored-skill-drift.md). For
+an agent's own runbooks or lessons, append itemised entries and merge them by
+rule rather than letting a model rewrite the whole document.
 
 Related but distinct: [brevity bias](brevity-bias.md) (an optimizer drifting
 toward short prompts) and summarization-on-eviction in
