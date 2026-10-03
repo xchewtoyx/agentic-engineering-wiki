@@ -53,6 +53,18 @@ about what was done. Raw traces should be retained as well as any summary,
 because debuggers and optimisers do markedly better on raw material
 ([raw traces over summaries](../optimization/raw-traces-over-summaries.md)).
 
+Keeping full prompts and raw traces makes the audit store a place where
+secrets collect: evidence an operations agent reads, such as config files,
+environment dumps and tool output, often contains tokens or keys. A redacted
+export protects only copies that leave the store. Scrub secrets at capture
+time, before anything is persisted, replacing them with opaque references
+that resolve through the secret store. Treat the audit store itself as
+sensitive, with least-privilege read access and a bounded retention period.
+This keeps the record consistent with
+[keeping credentials outside the sandbox](../security/credentials-outside-the-sandbox.md):
+the agent never sees a raw credential, so the trace of what it saw holds none
+either.
+
 The same record lets operators ask the agent what it is doing, why, and what it
 will do next, which is the standard defence against people losing track of what
 automation has done. Where the agent later edits its own runbooks or prompts,
