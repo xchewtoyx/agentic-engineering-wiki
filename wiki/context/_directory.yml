@@ -1,0 +1,4 @@
+type: _directory
+title: Context
+description: >-
+  What goes into the context window, in what order and at what budget? Prompt assembly, element importance and position, compression, snippet formatting and long-context failure modes.

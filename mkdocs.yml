@@ -1,0 +1,34 @@
+site_name: Agentic Engineering Wiki
+site_description: Curated, sourced notes on building LLM agents and applications.
+repo_url: https://github.com/xchewtoyx/agentic-engineering-wiki
+docs_dir: wiki
+site_dir: site
+
+theme:
+  name: material
+  features:
+    - navigation.indexes
+    - navigation.sections
+    - search.suggest
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle: { icon: material/brightness-7, name: Dark mode }
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle: { icon: material/brightness-4, name: Light mode }
+
+plugins:
+  - search
+
+hooks:
+  - hooks/frontmatter.py
+
+exclude_docs: |
+  _directory.yml
+
+validation:
+  links:
+    not_found: warn
+    # okf index links folders as `name/`; these resolve to section pages on the site.
+    unrecognized_links: info

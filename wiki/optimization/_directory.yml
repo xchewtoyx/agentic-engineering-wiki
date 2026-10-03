@@ -1,0 +1,4 @@
+type: _directory
+title: Optimization
+description: >-
+  How does the system get improved automatically or improve itself? Textual gradients, DSPy-style compilation, harness evolution and self-adapting contexts.

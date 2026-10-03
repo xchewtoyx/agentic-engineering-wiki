@@ -1,0 +1,4 @@
+type: _directory
+title: Reasoning
+description: >-
+  What reasoning procedure do you induce or run within a call? Chain-of-thought and its variants, decomposition, search, sampling and voting, self-critique and test-time compute, including when the procedure is triggered purely by prompt text. Multi-step pipelines belong in orchestration/.

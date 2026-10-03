@@ -1,0 +1,54 @@
+# Concept
+
+* [Autoregressive Generation](autoregressive-generation.md) - A model produces one committed token at a time with no ability to pause, backtrack, or edit — any correction has to be engineered on top, not expected from the raw generation process.
+* [Chat vs. Completion Tradeoffs](chat-vs-completion-tradeoffs.md) - Chat models buy unambiguous turn-taking and instruction compliance at the cost of alignment tax, excess chattiness, and loss of expressive range.
+* [ChatML Format](chatml-format.md) - A markup language tagging conversation turns with roles — system, user, assistant — that chat models are fine-tuned to complete unambiguously.
+* [Completion Confidence Scoring](completion-confidence-scoring.md) - Average a completion's token logprobs into a confidence signal that can drive application behavior, without treating it as an absolute quality score.
+* [Context Engineering](context-engineering.md) - Deliberate structuring of instructions, examples, retrieved material, and working memory inside the context window for reliable model behaviour.
+* [Critical Point Detection via Logprobs](critical-point-detection-via-logprobs.md) - Requesting logprobs on the prompt itself, not just the completion, surfaces surprising, anomalous, or high-information-density passages in the input.
+* [Fine-Tuning Approach Comparison](fine-tuning-approach-comparison.md) - Full fine-tuning, LoRA, and soft prompting trade training-document volume and duration against how much genuinely new behavior they can teach.
+* [Fine-Tuning as Prompt Continuation](fine-tuning-as-prompt-continuation.md) - Treat fine-tuning as baking static instructions and few-shots into weights so prompts shrink — LoRA for format and priors, full FT for new domains.
+* [Fine-Tuning Decision](fine-tuning-decision.md) - Decide whether to fine-tune based on whether you can gather enough correct, well-formatted, on-domain training examples — not on model quality alone.
+* [GenAI Radical Fragility](genai-radical-fragility.md) - Small prompt or model changes produce unforeseeable behavioural shifts, so agent harnesses need continuous offline regression—not one-time validation.
+* [Generality–Strength Tradeoff](generality-strength-tradeoff.md) - Today's LLMs trade generality (working across any domain) against strength (reliably solving complex tasks); narrowing scope is how you buy the latter.
+* [Generation Repetition Trap](generation-repetition-trap.md) - Once a repetitive pattern starts by chance, continuing it is statistically more likely at every subsequent step than breaking it, since the model has no mechanism for getting bored.
+* [Hallucination](hallucination.md) - A model cannot internally distinguish a recalled fact from a plausible invention, so confident-sounding fabrication is a structural property of generation, not an occasional bug.
+* [Harness as a Performance Lever](harness-as-performance-lever.md) - Holding the base model fixed, harness design alone materially shifts task completion — and the best harness is model-specific, so it must be re-adapted every time the base model changes.
+* [LLM Agent](llm-agent.md) - An LLM agent is a model that perceives an environment and acts on it through a tool inventory, with the model itself serving as the planner.
+* [LLM Application Loop](llm-application-loop.md) - An LLM application is a transformation layer converting a user's problem into a document the model completes, then converting the completion back.
+* [LLM Inference Latency Metrics (TTFT, TPOT)](llm-inference-latency-metrics.md) - LLM latency splits into time to first token (driven by prompt length) and time per output token (paid on every generated token), so prompt and harness choices move the two halves independently.
+* [LLM Model Selection Criteria](llm-model-selection-criteria.md) - Rank candidate models by intelligence, speed, cost, ease of use, functionality, and special constraints — and keep the choice swappable in code.
+* [LLM Token and Cost Metrics](llm-token-and-cost-metrics.md) - Input tokens, output tokens, request rate, and cost per request are the units in which an agent design's cost and rate-limit exposure are paid, so they belong in harness and prompt decisions, not just on the invoice.
+* [Logprob Classification Calibration](logprob-classification-calibration.md) - Shift a classifier's per-token logprobs by a constant to match the confidence threshold the application actually needs, not the model's default.
+* [Logprob Completion Quality Signal](logprob-completion-quality-signal.md) - Use average token logprobs (or early-token probabilities) as a relative confidence signal to gate show/warn/retry/escalate decisions in the harness.
+* [Logprobs Fundamentals](logprobs-fundamentals.md) - A model computes a full probability distribution over the next token, not just the one it picks, and can return those log-probabilities at no extra cost.
+* [Model Gateway](model-gateway.md) - A unified interface to self-hosted and commercial models that centralizes access control, fallbacks, logging hooks, and API-change maintenance.
+* [Model Router](model-router.md) - Classify intent and send each query to the right model, human, FAQ, or tool path so simple work stays cheap and out-of-scope work is declined early.
+* [Model Selection Tradeoffs](model-selection-tradeoffs.md) - Choosing a model for a task balances output quality against cost, latency tolerance, and whether the base model's knowledge or behavior needs changing.
+* [Output Consistency and Robustness](output-consistency-and-robustness.md) - Because generation is probabilistic, the same or a near-identical prompt can yield meaningfully different completions across calls — a property to manage, not a bug to eliminate.
+* [Prompt Engineering](prompt-engineering.md) - Crafting instructions that elicit a desired model outcome without changing weights — the first adaptation lever before heavier techniques like finetuning.
+* [Prompt Engineering Sophistication Levels](prompt-engineering-sophistication-levels.md) - Rank LLM apps from thin wrappers through context injection and tools up to goal-directed agency — each level adds harness obligations, not just wording.
+* [Prompt Logprob Critical Points](prompt-logprob-critical-points.md) - Echo prompt-token logprobs to flag anomalies (typos, odd spans) and high-information passages — thresholds must tolerate model and position drift.
+* [Provider Selection Guidance](provider-selection-guidance.md) - Narrow model choice by picking a provider first, then capability tier, then model size within that provider's lineup — hosted API or self-hosted.
+* [Response Caching](response-caching.md) - Exact or semantic reuse of prior model or retrieval results to cut latency and cost — with eviction, cacheability rules, and cross-user leak vigilance.
+* [Shared Token Prefix Trap](shared-token-prefix-trap.md) - Classification labels that share a starting token have their probabilities compound at that token, which can make a worse option outrank a better one.
+* [Stop Sequences](stop-sequences.md) - Halt generation at known end markers server-side (or cancel a stream) so postscripts never burn tokens after the extractable answer is complete.
+* [Subtoken Task Avoidance](subtoken-task-avoidance.md) - A model can't examine or manipulate individual letters within its own tokens, so any task requiring that should be handled outside the LLM.
+* [Temperature and Sampling](temperature-and-sampling.md) - A model computes a full probability distribution over the next token, and sampling — controlled by temperature — decides how faithfully generation follows versus deviates from the single most likely choice.
+* [Token Boundary Inertness](token-boundary-inertness.md) - Tokenizing two concatenated strings together can yield a different token count than tokenizing them separately, so token budgets aren't additive.
+* [Tokenization Fundamentals](tokenization-fundamentals.md) - LLMs process text as deterministic multicharacter tokens, not letters, which makes token count — not character count — the real unit of prompt length.
+* [Truth Bias](truth-bias.md) - A model presented with a false premise tends to continue assuming it's true rather than self-correcting, because self-correcting documents are rare in training data.
+* [User Problem Domain Complexity](user-problem-domain-complexity.md) - Scope an LLM application by four independent axes — medium, abstraction level, context required, and statefulness — before designing the harness.
+
+# Subdirectories
+
+* [Context](context/) - What goes into the context window, in what order and at what budget? Prompt assembly, element importance and position, compression, snippet formatting and long-context failure modes.
+* [Agentic Development](development/) - How do humans build software with agents? Spec fidelity and ambiguity, spec-driven synthesis, coding-agent patch discipline and human-agent collaboration patterns.
+* [Evaluation](evaluation/) - How do you know it works? Graders, eval suites, pass@k, offline proxies, ablation design and eval hygiene.
+* [Harness & Tools](harness/) - What does the agent see and touch? Agent-computer interfaces, tool definitions and inventories, function calling, observation design, episode prompt stacks, approval gates and MCP.
+* [Knowledge & Memory](knowledge/) - What lives outside the window, and how does it get back in? Retrieval-augmented generation, retrieval and query construction, agent memory tiers, and knowledge-base architecture and maintenance.
+* [Optimization](optimization/) - How does the system get improved automatically or improve itself? Textual gradients, DSPy-style compilation, harness evolution and self-adapting contexts.
+* [Orchestration](orchestration/) - How are model calls and agents composed over time? ReAct and Reflexion loops, planning, workflows and routing, multi-agent architectures and delegation.
+* [Prompting](prompting/) - What text do you write? Instruction wording, prompt anatomy, few-shot examples as format or task signal, document framing, completion boundaries and structured output. Notes about the reasoning procedure a prompt induces belong in reasoning/.
+* [Reasoning](reasoning/) - What reasoning procedure do you induce or run within a call? Chain-of-thought and its variants, decomposition, search, sampling and voting, self-critique and test-time compute, including when the procedure is triggered purely by prompt text. Multi-step pipelines belong in orchestration/.
+* [Security](security/) - How are agents attacked, and how are they defended? Prompt injection, jailbreaks, instruction hierarchy, guardrails and blast-radius containment.

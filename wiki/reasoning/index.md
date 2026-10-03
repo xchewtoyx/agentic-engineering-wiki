@@ -1,0 +1,36 @@
+# Concept
+
+* [Answer Cleansing](answer-cleansing.md) - Deterministically parse the model’s free-form extraction into a canonical answer type — number, choice letter, yes/no, or stripped free text.
+* [Branch-Solve-Merge](branch-solve-merge.md) - Spawn N independent solver trajectories on the same problem, then merge their outputs with a dedicated agent into a stronger combined solution.
+* [Chain-of-Thought Prompting](chain-of-thought-prompting.md) - Eliciting step-by-step natural-language reasoning before the final answer measurably improves multi-step task accuracy, because emitting the reasoning as visible text is the only way a model can build on its own intermediate insight.
+* [Compositional Mapping Exemplars](compositional-mapping-exemplars.md) - Teach solve-stage few-shots to name component outputs and how they concatenate or repeat, so composition reuses simpler meanings instead of flat I/O pairs.
+* [Compositional Translation Failure Modes](compositional-translation-failure-modes.md) - Under least-to-most on compositional commands, failures split into bad decompositions versus translation bugs — modifiers, conjunction order, copies.
+* [Consistency as Uncertainty Signal](consistency-as-uncertainty-signal.md) - Use the fraction of sampled paths that agree with the majority answer as a cheap calibration cue — low agreement means the model may not know.
+* [CoT Failure Modes](cot-failure-modes.md) - Categorize wrong chain-of-thought traces — logical mistakes, calculator errors, unnecessary steps, prior-knowledge gaps, or never starting to reason.
+* [CoT for Action Grounding](cot-for-action-grounding.md) - Use natural-language chain-of-thought to map instructions onto discrete action sequences when the hard part is choosing and ordering grounded steps.
+* [CoT Length Generalization](cot-length-generalization.md) - With sufficient scale, chain-of-thought exemplars of short chains can transfer to longer out-of-distribution step counts where standard prompting fails.
+* [CoT Path Correctness Gap](cot-path-correctness-gap.md) - A correct final answer does not imply a correct reasoning path — treat CoT traces as debugging evidence, not as verified proofs of intermediate steps.
+* [Cross-Task Few-Shot CoT Transfer](cross-task-few-shot-cot-transfer.md) - Few-shot CoT exemplars from another domain help mainly when answer format matches; mismatched formats collapse gains — often worse than zero-shot CoT.
+* [Decomposition Before Composition Failures](decomposition-before-composition-failures.md) - Least-to-most fails when subquestions are nonsensical or when a sub-answer is wrong; CoT often fails earlier by picking the wrong fact or operator.
+* [Deliberate Search Cost Tradeoff](deliberate-search-cost-tradeoff.md) - Pay for tree search over thoughts only when CoT already fails — knobs like beam size, votes, and mixed generate/evaluate models buy performance at 5–100× token cost.
+* [Domain-Specific Decomposition Prompts](domain-specific-decomposition-prompts.md) - Decomposition few-shots rarely transfer across domains — invest in within-domain demos because a correct split usually decides success.
+* [External Calculator for CoT](external-calculator-for-cot.md) - Post-process equations inside a chain of thought with a deterministic calculator so correct plans are not failed by arithmetic slips.
+* [Forced Reasoning Before Tools](forced-reasoning-before-tools.md) - Disable tool choice for a turn while still declaring tools so the model must plan in language before it is allowed to call functions.
+* [Least-to-Most Prompting](least-to-most-prompting.md) - Decompose a hard problem into simpler subproblems and solve them in order, feeding each answer into the next prompt for easy-to-hard generalization.
+* [LM Search Heuristic](lm-search-heuristic.md) - Use the language model itself to score or vote on frontier states so search can prune, look ahead, or backtrack without a hand-coded heuristic.
+* [Natural-Language Intermediate Reasoning](natural-language-intermediate-reasoning.md) - Extra tokens or post-answer rationales are not enough — useful CoT needs natural-language steps before the answer, not only equations or padding.
+* [Output-Side Reasoning Augmentation](output-side-reasoning-augmentation.md) - Improve hard tasks by eliciting intermediate tokens before the final answer — orthogonal to input-side tricks like instructions, few-shots, or soft prompts.
+* [Pause Tokens](pause-tokens.md) - Fine-tune a model to emit meaningless filler tokens before answering, giving it extra timesteps to incorporate context before committing to output.
+* [Plan-and-Solve Prompting](plan-and-solve-prompting.md) - Prompt the model to form an overarching plan before working the problem step by step, without any tool use or think-act-observe loop.
+* [Prompted IR Expansion](prompted-ir-expansion.md) - Expand compact intermediate expressions into flat outputs with a few-shot rewrite prompt when you lack — or prefer not to run — a dedicated executor.
+* [Reasoning Trigger Sensitivity](reasoning-trigger-sensitivity.md) - Zero-shot CoT accuracy swings widely with the exact reasoning cue — instructive triggers help; misleading or irrelevant ones collapse to baseline or worse.
+* [Rejection Sampling Best-of-N](rejection-sampling-best-of-n.md) - Sample n candidate completions from a base policy and pick the highest-scoring one under a reward or judge model — more inference compute, no extra training.
+* [Scale-Dependent Chain of Thought](scale-dependent-chain-of-thought.md) - Useful chain-of-thought reasoning emerges only past a model-scale threshold and often hurts smaller models — do not extrapolate from tiny-model ablations.
+* [Self-Consistency Decoding](self-consistency-decoding.md) - Sample multiple independent CoT reasoning paths and marginalize to the most consistent final answer — a self-ensemble without a trained verifier.
+* [Self-Critique Prompting](self-critique-prompting.md) - Ask the model to check its own output for errors before accepting it, as a lightweight reflection step inside a single generation or agent turn.
+* [Test-Time Compute Sampling](test-time-compute-sampling.md) - Generate several candidate completions instead of one and select the best, trading roughly linear extra cost for higher output quality.
+* [Tree of Thoughts](tree-of-thoughts.md) - Deliberate inference that searches a tree of coherent intermediate thoughts with LM generation, evaluation, lookahead, and backtracking.
+* [Two-Stage Reasoning–Answer Extraction](two-stage-reasoning-answer-extraction.md) - First prompt for a reasoning trace, then a second self-augmented prompt that appends an answer-format trigger and parses the final answer.
+* [When Chain of Thought Helps](when-chain-of-thought-helps.md) - Prefer CoT for hard multi-step tasks on large models with flat baseline scaling; skip it when the task is already easy or the model is too small.
+* [Zero-Plus-Few-Shot CoT](zero-plus-few-shot-cot.md) - Insert a zero-shot reasoning trigger into few-shot CoT exemplars so each demo still shows steps but also cues the model with the task-agnostic phrase.
+* [Zero-Shot Chain of Thought](zero-shot-chain-of-thought.md) - Elicit multi-step reasoning with a fixed trigger such as “Let’s think step by step,” without per-task few-shot reasoning exemplars.

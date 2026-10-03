@@ -1,0 +1,273 @@
+# Extraction plan: agentic-engineering → agentic-engineering-wiki
+
+Status: **executed** (2026-10-03). Outcome:
+
+- 403 notes extracted. Hand review corrected 28 rows (7%) of the draft mapping;
+  `note-mapping.tsv` is the final placement of the original notes.
+- Imports and merges: 16 new agent-framed notes (development 11, evaluation 2,
+  security 1, root 2). 17 rgh-sme duplicates or near-duplicates were folded
+  into existing notes instead.
+- Declined: `supply-chain-compromise` (no model, tool or MCP angle in the
+  source) and `verifying-generative-ai-outputs` (near-duplicate of
+  `hallucination`; its three distinct points were folded in).
+  `synthesis-provenance-log` was split between `synthesis-provenance-tracking`
+  and `spec-architect-role`.
+- Result: 419 notes, 1,932 links, 0 broken. `okf validate` and
+  `mkdocs build --strict` are clean.
+- Follow-up (curation): 27 notes have no inbound links. All were already
+  orphaned in the rgh-sme bundle, and none were introduced by the extraction.
+
+Scope note: this repo is about **curating information**: what the notes say and how
+they are organised. It deliberately carries no lifecycle machinery (no staleness
+tracking, verification stamps or status fields). Retiring the bundle from rgh-sme is
+a separate concern and isn't part of this plan.
+
+## Goals and constraints
+
+- Pull the agentic-engineering knowledge out of `rgh-sme`. Its sources are
+  different (mostly arXiv papers plus two practitioner books and some vendor
+  blogs), it goes out of date faster, and people consume it differently from
+  the other SME domains.
+- **One OKF bundle** (`wiki/`). Each domain gets a folder, and general
+  orientation concepts sit at the bundle root.
+- Bring in the concepts from other `rgh-sme` bundles that the agentic content
+  depends on. Do not create hard dependencies on those bundles, and do not
+  import whole domains.
+- Make it serve two uses: (1) okf/llm-wiki agent context, retrieved with
+  `okf search` / `okf context`; (2) a browsable docs site built from the same
+  files.
+- Skills cover consumption only. Curation tooling and fleeting notes stay out.
+  Ingest will later live in a separate curation repo that publishes into this
+  one.
+
+## Evidence: cluster analysis of the existing bundle
+
+Input: `rgh-sme/agentic-engineering/`, which has 403 concept notes and 1,391
+undirected intra-bundle links (the bundle has no cross-bundle links, per
+wiki-rules). I ran Louvain community detection over the link graph and kept
+the best modularity across 20 seeds × 3 resolutions (Q = 0.58). It found 10
+real communities, plus one singleton (C10):
+
+| #   | n   | Hub notes                                                                      | Reads as                     |
+| --- | --- | ------------------------------------------------------------------------------ | ---------------------------- |
+| C0  | 78  | context-engineering, lost-in-the-middle, prompt-assembly-algorithms, prompt-anatomy | prompt + context assembly    |
+| C1  | 77  | react-loop, reflexion, llm-agent, multi-agent-architecture, model-router       | agent loops & orchestration  |
+| C2  | 65  | function-calling, RAG, os-inspired-agent-memory, human-approval-gates, defensive-prompt-engineering | tools + memory + security (mixed) |
+| C3  | 41  | chain-of-thought, self-consistency, least-to-most, when-cot-helps              | reasoning techniques         |
+| C4  | 38  | agent-computer-interface, tool-definition-design, collapsed-observations       | ACI / harness                |
+| C5  | 36  | textual-gradient-descent, dspy-*, harness-evolution-outer-loop                 | automated optimisation       |
+| C6  | 35  | agent-grader-types, eval-driven-development, pass-at-k                         | evaluation                   |
+| C7  | 14  | context-adaptation, generator-reflector-curator-loop, context-collapse         | self-improving contexts (ACE)|
+| C8  | 9   | knowledge-maintenance-operating-schema, ingest-query-maintain-loop             | knowledge-base architecture  |
+| C9  | 9   | spec-fidelity, ambiguity-tax, zero-shot-repository-synthesis                   | spec-driven agentic dev      |
+| C10 | 1   | intention-implementation-consistency-checking                                  | isolated note (no intra-bundle links); mapped by hand to `development/` |
+
+The raw clusters don't make good routing targets. C0 and C2 each mix pillars
+that a reader would look for in different places, and C7–C9 are too small to
+stand alone. So I mapped them onto **intuitive pillars**, kept that mapping
+close to the cluster structure, and split the mixed clusters by name and
+keyword rules (see `note-mapping.tsv`, which lists every note with its
+proposed folder and source cluster).
+
+## Proposed layout
+
+```
+agentic-engineering-wiki/
+├── README.md                 # what this is, install, two ways to consume
+├── okf-core.toml             # single bundle: wiki/
+├── wiki/                     # THE bundle (agent context + docs source)
+│   ├── index.md              # generated by `okf index` (reserved; not a concept)
+│   ├── llm-agent.md          # root: overview + model fundamentals
+│   ├── context-engineering.md
+│   ├── tokenization-fundamentals.md
+│   ├── …
+│   ├── prompting/            # one folder per pillar
+│   │   ├── _directory.yml    # title + one-line scope (okf dir metadata)
+│   │   ├── index.md          # generated
+│   │   └── *.md
+│   ├── context/
+│   ├── knowledge/
+│   ├── reasoning/
+│   ├── harness/
+│   ├── orchestration/
+│   ├── evaluation/
+│   ├── optimization/
+│   ├── security/
+│   └── development/
+├── mkdocs.yml                # docs_dir: wiki
+├── .agents/skills/           # consumption skill (canonical)
+│   └── agentic-wiki/SKILL.md
+├── .claude/skills → ../.agents/skills
+├── plugin.json               # Agent Plugins manifest (consumer install)
+└── docs/                     # maintainer docs: this plan, wiki rules
+```
+
+## Proposed domains (10 folders + root)
+
+Each folder should answer one routing question without ambiguity. The
+counts come from the draft mapping, and "cohesion" is the share of a
+folder's outbound links that stay inside the folder (54% across all
+folders; the remainder is the expected cross-pillar traffic).
+
+| Folder           | ~n  | Routing question it answers                                                                                   | Anchor notes                                                                      | Cohesion |
+| ---------------- | --- | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | -------- |
+| `prompting/`     | 37  | How do I write the instruction and examples? (anatomy, few-shot / ICL, document formats, completion boundaries, structured output) | prompt-anatomy, in-context-learning, few-shot-example-formatting, little-red-riding-hood-principle | 49% |
+| `context/`       | 34  | What goes into the window, in what order, and at what budget? (assembly, element importance/position, compression, snippets, long-context failure) | lost-in-the-middle, prompt-assembly-algorithms, llm-application-feedforward-pass, conversational-agent-context | 57% |
+| `knowledge/`     | 45  | What lives outside the window, and how does it get back in? (RAG, retrieval, agent memory tiers, knowledge-base architecture & maintenance) | retrieval-augmented-generation, os-inspired-agent-memory, agent-memory-tiers, knowledge-maintenance-operating-schema | 60% |
+| `reasoning/`     | 35  | How do I make the model think better on one call? (CoT family, decomposition, self-consistency, ToT, test-time compute) | chain-of-thought-prompting, self-consistency-decoding, least-to-most-prompting, when-chain-of-thought-helps | 56% |
+| `harness/`       | 41  | What does the agent see and touch? (ACI, tool definitions & inventories, function calling, observations, episode prompt stack, approval gates, MCP) | agent-computer-interface, tool-definition-design, function-calling, collapsed-observations | 58% |
+| `orchestration/` | 38  | How are calls and agents composed over time? (ReAct/Reflexion loops, planning, workflows, routing, multi-agent, delegation) | react-loop, reflexion, plan-validate-execute, multi-agent-architecture, workflow-topology | 51% |
+| `evaluation/`    | 54  | How do I know it works? (graders, eval suites, pass@k, offline proxies, ablation, eval hygiene) | agent-grader-types, eval-driven-development, pass-at-k-and-pass-hat-k, offline-evaluation-proxies | 65% |
+| `optimization/`  | 45  | How does the system improve itself or get improved automatically? (TextGrad, DSPy, harness evolution, ACE context adaptation) | textual-gradient-descent, dspy-compiler-three-stages, harness-evolution-outer-loop, context-adaptation | 70% |
+| `security/`      | 14  | How is it attacked and defended? (prompt injection, jailbreaks, instruction hierarchy, guardrails) | indirect-prompt-injection, instruction-hierarchy, agent-system-level-defenses | 36% |
+| `development/`   | 18  | How do humans build software *with* agents? (spec fidelity, ambiguity tax, patch discipline, pairing patterns) | spec-fidelity, ambiguity-tax, zero-shot-repository-synthesis, navigator-driver-pair-programming | 31% |
+| *(root)*         | 42  | What is this field, where do I start, and how does the model itself behave? (overview concepts plus model fundamentals: tokens, sampling, logprobs, hallucination, model selection/routing, fine-tune vs prompt) | llm-agent, context-engineering, prompt-engineering, llm-application-loop, tokenization-fundamentals, temperature-and-sampling, model-router | — |
+
+Decisions behind the boundaries:
+
+- **`context/` and `knowledge/` are separate.** "Context/knowledge" is one
+  pillar conceptually, but the routing question splits cleanly at the window
+  edge: "assemble/budget what's in the prompt" vs "store/retrieve what
+  isn't". Together they would be the largest folder (~80 notes) with two
+  separate centres. The context↔knowledge seam carries 35 cross-links, which
+  is fine.
+- **`reasoning/` is separate from `prompting/`** (decided). C3 is a clean
+  community, and only 21 links cross the prompting↔reasoning seam.
+  `reasoning/`'s real neighbours are `orchestration/` (49 links) and
+  `evaluation/` (35). Its content is about what computation the model
+  performs (decomposition, search, sampling and voting, test-time compute),
+  not about phrasing. It is also the part of the field changing fastest as
+  reasoning moves into the models themselves, so keeping it separate
+  contains that churn.
+
+  **Placement rule** (goes into both folders' `_directory.yml` and the wiki
+  rules):
+
+  > If the note is about **what text you write** (instruction wording,
+  > anatomy, examples as format or task signal, output structure), it goes
+  > in `prompting/`. If it is about **what reasoning procedure you induce or
+  > run** (step-by-step, decomposition, search, sampling and voting,
+  > self-critique, test-time compute), it goes in `reasoning/`, even when the
+  > procedure is triggered purely by prompt text. Few-shot exemplars whose
+  > job is to demonstrate a procedure (CoT exemplars, decomposition demos)
+  > go in `reasoning/`. When a note is about a multi-step *pipeline* rather
+  > than a single call, it goes in `orchestration/`.
+
+  Applying the rule to the draft mapping moved `compositional-mapping-exemplars`
+  from `prompting/` to `reasoning/` and `research-outline-control-artifact`
+  from `reasoning/` to `orchestration/`. The rest of the hand review applies it
+  the same way.
+- **ACE (C7) goes in `optimization/`, not `context/`.** It is about
+  contexts *evolving from execution feedback*, which is the same family as
+  TextGrad and harness evolution. `context-engineering.md` (root) links
+  across to it.
+- **Model fundamentals live at the root, not in a `models/` folder.** As a
+  folder it was the least cohesive (41%), and it linked out more than in
+  (68 cross-folder links out, 43 in). That makes it an entry point that
+  other pillars build on, not a specialism of its own, so it sits with the
+  overview concepts. The root grows to ~42 notes, which is fine because it is
+  the "start here" layer.
+- **`security/` and `development/` are small and cross-cutting.** I kept
+  them because the routing intent is unmistakable ("injection", "coding
+  agent workflow"), and both are where most imports will land.
+- **Rejected:** a `memory/` vs `retrieval/` split (too fine, since memory
+  notes are mostly retrieval policies); an `architecture/` catch-all (it
+  absorbs everything and routes nothing); an `operations/` folder (runtime
+  monitoring stays out of scope, see imports).
+
+The automated mapping is a draft. I expect about 10–15% of rows to need
+hand correction, mostly notes whose names matched a keyword but whose content
+belongs elsewhere. For example, `react-thought-editing` landed in `knowledge/`
+and probably belongs in `harness/`.
+
+## Imports from other rgh-sme bundles
+
+Rule: import an **individual note** only when an agentic note's argument
+depends on it, and rewrite it from the agentic angle rather than copying the
+parent domain's framing. The note keeps its `sources:`. No links point back
+to rgh-sme. If a whole domain would need to come along, cite the source
+instead.
+
+Candidates found by keyword scan of non-agentic bundles (to confirm in the
+extraction pass):
+
+| From                         | Note(s)                                                                                                                                                                  | Lands in        | Notes                                                                                                                   |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `requirements-architecture`  | bduf-in-agentic-engineering, bottleneck-inversion-to-intent-clarity, cognitive-debt-in-agent-synthesized-code, phase-latency-compression, rigidity-flexibility-pendulum, spec-architect-role, specification-governed-operating-model, cumulative-translation-tax, agentic-autonomy-telemetry | `development/`  | Agentic-native already. `spec-fidelity`, `ambiguity-tax`, `agentic-linearism` exist in both, so **merge**, don't duplicate |
+| `requirements-architecture`  | three-layer-wiki-architecture, synthesis-provenance-log, synthesis-efficiency-ratio, knowledge-base-maintenance-economics, human-llm-role-division-in-curation, ingest-query-lint-loop | `knowledge/`    | Merge into the LLM-Wiki cluster (C8). Several are near-duplicates                                                    |
+| `evidence-verification`      | llm-judge-cross-validation-against-independent-metric, verifier-independence-from-generator, verifying-generative-ai-outputs, benchmark-contamination-boundary, citation-presence-is-not-grounding | `evaluation/`   | `truth-bias`, `spec-fidelity-gate`, `intention-implementation-consistency-check` already duplicated, so merge          |
+| `judgment-calibration`       | llm-judge-rubric-calibration                                                                                                                                             | `evaluation/`   |                                                                                                                         |
+| `security-engineering`       | confused-deputy (agent-framed), supply-chain-compromise (only the model/tool/MCP supply-chain angle)                                                                      | `security/`     | `defensive-prompt-engineering` is duplicated, so merge                                                                    |
+| `observability`              | llm-token-and-cost-metrics, llm-inference-latency-metrics, silent-model-version-drift, eval-monitoring-feedback-loop                                                     | root, `evaluation/` | Only the definitions agents need. Runtime-monitoring practice stays in rgh-sme                                 |
+| `operational-handover`       | tacit-knowledge-erosion-under-ai-assisted-work                                                                                                                           | `development/`  |                                                                                                                         |
+
+Not imported: general SRE, observability, CI/CD and security-engineering
+practice. The capacity-performance notes about LLM serving (MFU/MBU, goodput,
+batching) are inference infrastructure, not agent engineering, so they stay
+too.
+
+Expected size after imports and merges: about 420–430 notes.
+
+## Note format and conventions
+
+- **Same OKF v0.2 frontmatter** (`type`, `title`, `description`, `sources`).
+  The extraction drops nothing.
+- **Links:** keep inline relative CommonMark links. Within the single bundle,
+  links across folders are allowed and expected (`../harness/tool-inventory.md`).
+  `okf move` already rewrites inbound links on relocation, so the move is
+  mechanical. Concept IDs become path-based (`harness/tool-inventory`).
+- **No hub/index concept notes** (the rgh-sme wiki-rules carry over).
+  Folder landing pages are `index.md`, which is reserved in OKF so
+  retrieval doesn't see it. They are generated by `okf index --recurse` and
+  titled from `_directory.yml`. That gives the docs site navigation without
+  adding hub noise to the agent graph.
+- **No lifecycle fields.** No `verified`, `stale_after` or `status`. When
+  content goes out of date, curation handles it by revising or removing the
+  note. The `sources:` frontmatter already shows where each claim came from.
+- **wiki-rules** carry over with two amendments: (1) folders are allowed,
+  one level only, with membership determined by routing question; (2) the
+  "never link across bundles" rule becomes "never link outside `wiki/`".
+
+## Docs site
+
+- **MkDocs Material** (no preference was stated, so I picked it). `docs_dir`
+  points at `wiki/`, so there's one source of truth and no copy step. It
+  renders relative `.md` links natively, uses `index.md` as section pages,
+  and fits the Python/okf toolchain.
+- **Minimal configuration:** a single `mkdocs.yml` using the default
+  directory nav (nothing maintained by hand) and the built-in search. At
+  most, one small hook renders the frontmatter `description` as a lede and
+  `sources` as a references footer. No backlinks or other custom plugins.
+- **One CI workflow:** `okf validate`, then `mkdocs build --strict` (which
+  catches broken links), then deploy to GitHub Pages.
+
+## Consumption skills (light)
+
+- **One skill**, `agentic-wiki`. It carries the routing table above (folder
+  → question), then the search → `list-concepts` fallback → `okf context
+  --seed … --budget-chars` → follow-links loop. It's a slimmed version of
+  rgh-sme's `docs/consuming.md`, scoped to one bundle, so it needs no
+  wiki-router and no multi-bundle synthesis.
+- `plugin.json` plus a release zip in the rgh-sme consumer-plugin format, so
+  other agents can install the bundle and skill without cloning the repo.
+- No curate, onboard, charter or landscape skills, and no `fleeting/`,
+  `ratings/`, `landscape/`, `watch/` or ledgers.
+
+## Extraction mechanics (next pass)
+
+1. Copy `rgh-sme/agentic-engineering/*.md` into `wiki/` (flat), then
+   `okf validate`.
+2. Hand-review `note-mapping.tsv`, then apply it with `okf move` per row
+   (scripted), which rewrites links as it goes.
+3. Merge duplicates and add imports (adapted, not verbatim). Fix any links
+   the merges leave dangling.
+4. Write `_directory.yml` for each folder, then `okf index --recurse`.
+5. Add the site config, the skill, the plugin manifest and CI.
+
+The move and merge scripts are one-off. They run once and aren't committed,
+which keeps the repo light on machinery.
+
+## Open questions
+
+None at the layout level. What remains is the row-by-row hand review of
+`note-mapping.tsv` during extraction.

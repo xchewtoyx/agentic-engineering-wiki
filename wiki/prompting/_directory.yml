@@ -1,0 +1,4 @@
+type: _directory
+title: Prompting
+description: >-
+  What text do you write? Instruction wording, prompt anatomy, few-shot examples as format or task signal, document framing, completion boundaries and structured output. Notes about the reasoning procedure a prompt induces belong in reasoning/.

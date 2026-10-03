@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agentic-engineering-wiki",
+  "version": "0.1.0",
+  "description": "Curated, sourced wiki of agentic engineering knowledge — prompting, context, memory, reasoning, harness design, orchestration, evaluation, optimization, security and agentic development — packaged as an OKF bundle with a consumption skill.",
+  "author": {
+    "name": "Russell Heilling",
+    "url": "https://github.com/xchewtoyx"
+  },
+  "homepage": "https://github.com/xchewtoyx/agentic-engineering-wiki",
+  "repository": "https://github.com/xchewtoyx/agentic-engineering-wiki",
+  "license": "CC0-1.0",
+  "keywords": ["okf", "wiki", "llm", "agents", "prompt-engineering", "context-engineering"]
+}
